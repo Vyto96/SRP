@@ -1,0 +1,5 @@
+salesreporter.ddns.net {
+    proxy / localhost:4000 {
+        transparent
+    }
+}
