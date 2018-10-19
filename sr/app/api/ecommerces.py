@@ -8,5 +8,7 @@ from . import api
 
 @api.route('/ecommerces/')
 def get_ecommerces():
-    
-    return
+    ecoms = Ecommerces.query.all()
+    if ecoms:
+        return jsonify( {'ecommerces': [e.to_json() for e in ecoms] } )
+    return '<h1>nessuno ecommerce nel db</h1>'
