@@ -15,4 +15,6 @@ def ebay_get_auth_code():
 
 @middle.route('/ebay/auth_code/response/', methods=['GET', 'POST'])
 def ebay_auth_code_response():
-    return '<h1>codice ricevuto </h1>'
+    cod = request.args['prova']
+    
+    return '<h1>codice ricevuto == {}</h1>'.format(cod)
