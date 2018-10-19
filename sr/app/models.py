@@ -125,7 +125,8 @@ class Store(db.Model):
             'url': url_for('api.get_store', id=self.id),
             'store_name': self.store_name,
             'reference_ecommerce_url': url_for('api.get_ecommerces', id=self.ecommerce_id),
-            'store_user_owner': url_for('api.get_users', id=self.user_id)
+            'store_user_owner': url_for('api.get_users', id=self.user_id),
+            'auth_code': self.auth_code
         }
         return json_store
 
