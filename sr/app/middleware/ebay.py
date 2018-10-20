@@ -23,12 +23,14 @@ def ebay_auth_code_response():
     #HEADER
     client_id = os.environ.get('EBAY_CLIENT_ID')
     client_secret = os.environ.get('EBAY_CLIENT_SECRET')
-    s = 'Basic ' + client_id + ':' + client_secret
+    s =  client_id + ':' + client_secret
     s_b64 = base64.b64encode(s.encode('utf-8'))
+
+    credential = 'Basic ' + s_b64
 
     headers = {
         'Content-Type': "application/x-www-form-urlencoded",
-        'Authorization': s_b64,
+        'Authorization': credential,
         }
 
     #BODY
@@ -50,4 +52,4 @@ def ebay_auth_code_response():
     # s = Store(store_name='ebay.it', auth_code=cod)
     # db.session.add(s)
     # db.session.commit()
-    return '<h1> code response {} <br> {} <br>json ricevuto == <br> {}</h1>'.format(response.status_code , response.text, response.json())
+    return '<h1> code not_enc {} <br> {} <br>json ricevuto == <br> {}</h1>'.format(response.status_code , response.text, response.json())
