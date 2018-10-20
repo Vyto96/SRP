@@ -33,7 +33,11 @@ def ebay_auth_code_response():
 
     #BODY
     g_type = 'authorization_code'
-    auth_cod = request.args['code']
+
+
+    import urllib.parse
+    auth_cod = urllib.parse.quote(request.args['code'])
+
     expires_in = request.args['expires_in']
     ebay_uri = os.environ.get('EBAY_URI')
     payload = "grant_type=" + g_type + \
@@ -41,7 +45,6 @@ def ebay_auth_code_response():
               "&redirect_uri=" + ebay_uri
 
     response = requests.request("POST", url, data=payload, headers=headers)
-
     # s = Store(store_name='ebay.it', auth_code=cod)
     # db.session.add(s)
     # db.session.commit()
