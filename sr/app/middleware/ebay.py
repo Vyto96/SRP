@@ -43,7 +43,7 @@ def ebay_auth_code_response():
     ebay_uri = os.environ.get('EBAY_URI')
     payload = {
                 'grant_type':  g_type,
-                'code': auth_cod ,
+                'code': cod_not_encoded, #auth_cod ,
                 'redirect_uri': ebay_uri
             }
     response = requests.post(url, data=payload, headers=headers)
