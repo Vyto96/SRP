@@ -1,4 +1,4 @@
-from flask import jsonify, redirect, request, url_for,
+from flask import jsonify, redirect, request, url_for
 from .. import db
 from ..models import Store
 from . import middle
