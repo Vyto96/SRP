@@ -36,7 +36,8 @@ def ebay_auth_code_response():
 
 
     import urllib.parse
-    auth_cod = urllib.parse.quote(request.args['code'])
+    cod_not_encoded = request.args['code']
+    auth_cod = urllib.parse.quote(cod_not_encoded)
 
     expires_in = request.args['expires_in']
     ebay_uri = os.environ.get('EBAY_URI')
@@ -48,4 +49,4 @@ def ebay_auth_code_response():
     # s = Store(store_name='ebay.it', auth_code=cod)
     # db.session.add(s)
     # db.session.commit()
-    return '<h1>expire_in: {} <br> code inviato: <br> {}<br> json ricevuto == <br> {}</h1>'.format(expires_in, auth_cod, response.json())
+    return '<h1>not encoded:<br> {} <br> code inviato: <br> {}<br> json ricevuto == <br> {}</h1>'.format(cod_not_encoded, auth_cod, response.json())
