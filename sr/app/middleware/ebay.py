@@ -48,4 +48,4 @@ def ebay_auth_code_response():
     # s = Store(store_name='ebay.it', auth_code=cod)
     # db.session.add(s)
     # db.session.commit()
-    return '<h1>expire_in: {} <br> code inviato: <br> {}<br> json ricevuto == <br> {}</h1>'.format(expires_in, auth_cod, response.headers)
+    return '<h1>expire_in: {} <br> code inviato: <br> {}<br> json ricevuto == <br> {}</h1>'.format(expires_in, auth_cod, response.json())
