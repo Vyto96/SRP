@@ -1,11 +1,15 @@
 #!/bin/bash
 
+export SR_SECRET_KEY=''
+# export DB_URL=''
+#EMAIL
 export MAIL_USERNAME=''
 export MAIL_PASSWORD=''
-export SR_SECRET_KEY=''
-export EBAY_URI =''
+export SR_ADMIN=''
+export SR_MAIL_SENDER=''
 
-#OPTIONAL
-# export DB_URL=''
-# export SR_ADMIN=''
-# export SR_MAIL_SENDER=''
+#EBAY
+export EBAY_URI=''
+export EBAY_CLIENT_ID=''
+export EBAY_CLIENT_SECRET=''
+export EBAY_RUNAME='' 
