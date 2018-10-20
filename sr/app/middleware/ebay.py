@@ -24,8 +24,8 @@ def ebay_auth_code_response():
     client_id = os.environ.get('EBAY_CLIENT_ID')
     client_secret = os.environ.get('EBAY_CLIENT_SECRET')
     s =  client_id + ':' + client_secret
-    s_b64 = base64.b64encode(s.encode('utf-8'))
-
+    # s_b64 = base64.b64encode(s.encode('utf-8'))
+    s_b64 ='dml0dG9yaW8tcHJvdmEtUFJELTM5MzU4NzI4NC1hNmQ2NzZjYzpQUkQtOTM1ODcyODRjNjUwLTJlZWMtNGRmNi1iNGMxLTMyMTU='
     credential = 'Basic ' + s_b64
 
     headers = {
