@@ -1,23 +1,32 @@
-from flask import jsonify, redirect, request, url_for
+from flask import jsonify, redirect, request, url_for,
 from .. import db
-from ..models import Store 
+from ..models import Store
 from . import middle
-import requests
+import requests, os, requests, base64
 
-@middle.route('/ebay/auth_code/', methods=['GET', 'POST'])
-def ebay_get_auth_code():
+@middle.route('/ebay/auth', methods=['GET', 'POST'])
+def ebay_auth():
     #url = request.form['access_url']
-    url = 'https://auth.ebay.com/oauth2/authorize?client_id=vittorio-prova-PRD-393587284-a6d676cc&response_type=code&redirect_uri=vittorio_Zavino-vittorio-prova--klgnkzvih&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly'
+    url = os.environ.get('EBAY_URI')
     # r = requests.get(url)
     return redirect(url)
     # return redirect(r.text)
 
 
 
+
 @middle.route('/ebay/auth_code/response/', methods=['GET', 'POST'])
 def ebay_auth_code_response():
     cod = request.args['code']
-    s = Store(store_name='ebay.it', auth_code=cod)
+
+    url = 'https://api.ebay.com/identity/v1/oauth2/token'
+     
+    s_b = s.encode('utf-8')
+    s_b64 = base64.b64encode(s_b)
+
+    r = requests.post(url=)
+
+    # s = Store(store_name='ebay.it', auth_code=cod)
     db.session.add(s)
     db.session.commit()
     return '<h1>codice ricevuto == {}</h1>'.format(cod)
