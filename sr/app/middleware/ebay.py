@@ -34,6 +34,7 @@ def ebay_auth_code_response():
     #BODY
     g_type = 'authorization_code'
     auth_cod = request.args['code']
+    expires_in = request.args['expires_in']
     ebay_uri = os.environ.get('EBAY_URI')
     payload = "grant_type=" + g_type + \
               "&code=" + auth_cod + \
@@ -44,4 +45,4 @@ def ebay_auth_code_response():
     # s = Store(store_name='ebay.it', auth_code=cod)
     # db.session.add(s)
     # db.session.commit()
-    return '<h1>json ricevuto == <br> {}</h1>'.format(response.headers)
+    return '<h1>expire_in: {} <br> code inviato: <br> {}<br> json ricevuto == <br> {}</h1>'.format(expires_in, auth_cod, response.headers)
