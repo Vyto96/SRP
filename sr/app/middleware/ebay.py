@@ -50,18 +50,19 @@ def ebay_auth_code_response():
 def ebay_get_inventory():
     url = os.environ.get('SR_HOME')  + '/middle/ebay/get_token'
     token = requests.get(url)
-    t_data = token.json()
-    url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
-    auth = 'Bearer ' + t_data['access_token']
-    headers = { 'Authorization': auth }
-    payload = {
-            'offset': 0,
-            'limit': 2
-    }
 
-    inventory = requests.get(url, headers=headers, params=payload)
 
-    return '<h1>primi due oggetti dell inventario:<br>{}</h1>'.format(inventory.text)
+    if token:
+        t_data = token.json()
+        url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
+        auth = 'Bearer ' + t_data['access_token']
+        headers = { 'Authorization': auth }
+        payload = {'offset': 0, 'limit': 2 }
+        inventory = requests.get(url, headers=headers, params=payload)
+        return '<h1>primi due oggetti dell inventario:<br>{}</h1>'.format(inventory.text)
+        
+    return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
+
 
     # if token:
     #     return '<h1>TOKEN RICEVUTO</h1>'
