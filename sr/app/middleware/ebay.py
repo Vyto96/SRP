@@ -9,7 +9,7 @@ def ebay_auth():
     #url = request.form['access_url']
     url = os.environ.get('EBAY_RUNAME')
     # r = requests.get(url)
-    return redirect(url)Run the reports both
+    return redirect(url)
     # return redirect(r.text)
 
 @middle.route('/ebay/get_token/response/', methods=['GET', 'POST'])
@@ -43,4 +43,3 @@ def ebay_auth_code_response():
 def ebay_get_inventory():
     sr_home = os.environ.get('SR_HOME')
     token = requests.get(sr_home + '/ebay/get_token')
-    
