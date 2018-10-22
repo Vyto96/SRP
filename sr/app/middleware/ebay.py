@@ -44,5 +44,5 @@ def ebay_get_inventory():
     sr_home = os.environ.get('SR_HOME')
     token = requests.get(sr_home + '/ebay/get_token')
     if token:
-        return '<h1>TOKEN RICEVUTO</h1>')
-    return '<h1>TOKEN NON RICEVUTO</h1>')
+        return '<h1>TOKEN RICEVUTO</h1>'
+    return '<h1>TOKEN NON RICEVUTO</h1>'
