@@ -37,11 +37,33 @@ def ebay_auth_code_response():
 # devo fare load per far diventare json in dict e
 #  poi dump per farla diventare stringa con eventuali valori NULL invece che none
 
+  #
+  # {
+  #   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
+  #   "expires_in": 7200,
+  #   "refresh_token": "v^1.1#i^1#p^3#r^1...zYjRV4xMjg0",
+  #   "refresh_token_expires_in": 47304000,
+  #   "token_type": "User Access Token"
+  # }
 
 @middle.route('/ebay/get_inventory')
 def ebay_get_inventory():
     url = os.environ.get('SR_HOME')  + '/middle/ebay/get_token'
     token = requests.get(url)
-    if token:
-        return '<h1>TOKEN RICEVUTO</h1>'
-    return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
+
+    url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
+    headers = {
+            'Authorization': 'Bearer ' + token['access_token']
+    }
+    payload = {
+            'offset': 0,
+            'limit': 2
+    }
+
+    inventory = requests.get(url, headers=headers, params=payload)
+
+    return '<h1>primi due oggetti dell inventario:<br>{}</h1>'.format(inventory.text)
+
+    # if token:
+    #     return '<h1>TOKEN RICEVUTO</h1>'
+    # return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
