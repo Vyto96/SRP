@@ -53,14 +53,14 @@ def ebay_get_inventory():
 
 
     if token:
-        t_data = token.json()
+        t_data = json.loads( token.json() )
         url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
         auth = 'Bearer ' + t_data['access_token']
         headers = { 'Authorization': auth }
         payload = {'offset': 0, 'limit': 2 }
         inventory = requests.get(url, headers=headers, params=payload)
         return '<h1>primi due oggetti dell inventario:<br>{}</h1>'.format(inventory.text)
-        
+
     return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
 
 
