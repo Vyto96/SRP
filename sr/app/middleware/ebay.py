@@ -60,7 +60,7 @@ def ebay_get_inventory():
         auth = 'Bearer ' + tok
         headers = { 'Authorization': auth }
         payload = {'offset': 0, 'limit': 2 }
-        inventory = requests.get(url, headers=headers, params=payload)
+        inventory = requests.get(url_api, headers=headers, params=payload)
         return '<h1>primi due oggetti dell inventario:<br>{}</h1>'.format(inventory.text)
 
     return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
