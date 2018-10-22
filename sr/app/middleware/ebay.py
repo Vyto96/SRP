@@ -54,8 +54,9 @@ def ebay_get_inventory():
 
     if token:
         t_data = json.loads( token.json() )
+        tok = t_data['access_token']
         url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
-        auth = 'Bearer ' + t_data['access_token']
+        auth = 'Bearer ' + tok
         headers = { 'Authorization': auth }
         payload = {'offset': 0, 'limit': 2 }
         inventory = requests.get(url, headers=headers, params=payload)
