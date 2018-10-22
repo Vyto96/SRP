@@ -29,7 +29,7 @@ def ebay_auth_code_response():
                 'redirect_uri': os.environ.get('EBAY_URI')
             }
 
-    return requests.post(url, data=payload, headers=headers)
+    return requests.post(url, data=payload, headers=headers).text
 
     # s = Store(store_name='Ebay', oauth_info=json.dumps( r.json() ))
     # db.session.add(s)
