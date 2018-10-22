@@ -112,8 +112,9 @@ class Store(db.Model):
     __tablename__ = 'stores'
     id = db.Column(db.Integer, primary_key=True)
     store_name = db.Column(db.String(64))
-    auth_code = db.Column(db.String(1024))
-    token = db.Column(db.Text)
+
+    oauth_info = db.Column(db.String(4096))
+     
 
     # relazione N:1
     user_id = db.Column(db.Integer, db.ForeignKey('users.id') )
@@ -126,7 +127,6 @@ class Store(db.Model):
             'store_name': self.store_name,
             'reference_ecommerce_url': url_for('api.get_ecommerces', id=self.ecommerce_id),
             'store_user_owner': url_for('api.get_users', id=self.user_id),
-            'auth_code': self.auth_code
         }
         return json_store
 
