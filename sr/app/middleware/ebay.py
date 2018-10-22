@@ -40,8 +40,8 @@ def ebay_auth_code_response():
 
 @middle.route('/ebay/get_inventory')
 def ebay_get_inventory():
-    sr_home = os.environ.get('SR_HOME')
-    token = requests.get(sr_home + '/ebay/get_token')
+    url = os.environ.get('SR_HOME' + '/ebay/get_token')
+    token = requests.get(url)
     if token:
         return '<h1>TOKEN RICEVUTO</h1>'
-    return '<h1>TOKEN NON RICEVUTO</h1>'
+    return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
