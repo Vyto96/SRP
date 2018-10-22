@@ -1,4 +1,4 @@
-from flask import jsonify, redirect, request, url_for, json
+from flask import jsonify, redirect, request, url_for, json, make_response
 from .. import db
 from ..models import Store
 from . import middle
@@ -29,8 +29,7 @@ def ebay_auth_code_response():
                 'redirect_uri': os.environ.get('EBAY_URI')
             }
 
-    return requests.post(url, data=payload, headers=headers).text
-
+    return make_response(requests.post(url, data=payload, headers=headers).json())
     # s = Store(store_name='Ebay', oauth_info=json.dumps( r.json() ))
     # db.session.add(s)
     # db.session.commit()
