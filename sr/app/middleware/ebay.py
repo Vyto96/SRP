@@ -59,7 +59,7 @@ def ebay_get_inventory():
         url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
         auth = 'Bearer ' + tok
         headers = { 'Authorization': auth }
-        payload = {'offset': 0, 'limit': 2 }
+        payload = {'offset': 0, 'limit': 5 }
         inventory = requests.get(url_api, headers=headers, params=payload)
         return '<h1>primi due oggetti dell inventario:<br>{}</h1>'.format(inventory.text)
 
