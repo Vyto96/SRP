@@ -50,12 +50,10 @@ def ebay_auth_code_response():
 def ebay_get_inventory():
     url = os.environ.get('SR_HOME')  + '/middle/ebay/get_token'
     token = requests.get(url)
-
+    t_data = token.json()
     url_api = ' https://api.ebay.com/sell/inventory/v1/inventory_item'
-    auth = 'Bearer ' + str(token['access_token'])
-    headers = {
-            'Authorization': auth
-    }
+    auth = 'Bearer ' + t_data['access_token'])
+    headers = { 'Authorization': auth }
     payload = {
             'offset': 0,
             'limit': 2
