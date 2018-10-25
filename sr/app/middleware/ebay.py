@@ -81,7 +81,7 @@ def ebay_get_report():
                 # transazioni / visualizzazioni: ovvero quante delle effettive visualizzazioni diventano poi ordini
         }
 
-        report = requests.get(url_api, headers=headers, params=encode_params)
+        report = requests.get(url_api, headers=headers, params=params)
 
         return '<h1>report ricevuto:<br>{}</h1>'.format(report.text, report)
 
