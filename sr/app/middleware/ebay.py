@@ -67,7 +67,7 @@ def ebay_get_report():
         }
 
 
-        encode_params = quote(params)
+        encode_params = quote(str(params))
 
         report = requests.get(url_api, headers=headers, params=encode_params)
 
