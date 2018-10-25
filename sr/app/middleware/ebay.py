@@ -69,16 +69,9 @@ def ebay_get_report():
         # encode_params = quote(str(params))
 
         params = {
-            'dimension': dim,  # DAY | #LISTING
-            # 'sort': sort_field,
-            'filter': '{' + \
-                'marketplace_ids:' + '{' + mktp + '},' + \
-                'date_range:' + '[' + start_date + '..' + end_date + ']'
-                     '}',
-            'metric': 'TRANSACTION,LISTING_VIEWS_TOTAL,SALES_CONVERSION_RATE'
-                # numero di transazioni completate
-                # numero totale di annunci visualizzati
-                # transazioni / visualizzazioni: ovvero quante delle effettive visualizzazioni diventano poi ordini
+            "filter": 'marketplace_ids:{' + mktp + '},date_range:[' + start_date + '..' + end_date +']',
+            "dimension": dim,
+            "metric": "LISTING_VIEWS_TOTAL,TRANSACTION,SALES_CONVERSION_RATE"
         }
 
         report = requests.get(url_api, headers=headers, params=params)
