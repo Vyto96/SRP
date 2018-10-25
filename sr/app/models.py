@@ -76,7 +76,7 @@ class Ecommerce(db.Model):
 class Function(db.Model):
     __tablename__ = 'functions'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64)))
+    name = db.Column(db.String(64))
     oauth_json = db.Column( db.String(4096) )
     # relazione N:1
     ecommerce_id = db.Column(db.Integer, db.ForeignKey('ecommerces.id') )
