@@ -90,10 +90,6 @@ class Function(db.Model):
                 'name':'ebay_get_report',
                 'ecom': 'EBAY_DE'
             }
-            {
-                'name':'ebay_get_token',
-                'ecom': 'EBAY_DE'
-            }
         ]
 
         for f in configured_fun:
