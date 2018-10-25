@@ -27,12 +27,12 @@ class User(db.Model, UserMixin):
     def to_json(self):
         json_user = {
             'url': url_for('api.get_user', id=self.id),
+            'id': self.id,
+            'email': self.email,
             'username': self.username,
-            'stores_url': url_for('api.get_user_stores', id=self.id),
+            'stores_url': url_for('api.get_user_stores', id=self.id)
         }
         return json_user
-
-
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -55,50 +55,58 @@ class Ecommerce(db.Model):
 
     @staticmethod
     def insert_ecommerce():
-        configured_ecom = ['Ebay.it', 'Ebay.uk']
+        configured_ecom = ['EBAY_DE', 'EBAY_GB']
 
         for e in configured_ecom:
             ecom = Ecommerce.query.filter_by(name=e).first()
             if ecom is None: #se l'ecommerce non e' stato gia' inserito
                 ecom = Ecommerce(name=e)
-                print('sto inserendo ' + ecom.name)
                 db.session.add(ecom)
 
         db.session.commit()
         print('Ecommerce correctly entered!')
 
+
     def __repr__(self):
         return '<Ecommerce {}>'.format(self.name)
 
-
-
-
-
-
-
 #----------------------------------------------------------
-
 
 #----------------------------------------------------------
 class Function(db.Model):
     __tablename__ = 'functions'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-
-    #----------------------------
-    # roba usata dalla funzionalita'. ad esempio json, ovvero:
-    # url api esterna(ebay) usata
-    # parametri di input
-    #     info per usare l'api esterna accesso
-    #----------------------------
-
-    # RELAZIONI
-
+    name = db.Column(db.String(64)))
+    oauth_json = db.Column( db.String(4096) )
     # relazione N:1
     ecommerce_id = db.Column(db.Integer, db.ForeignKey('ecommerces.id') )
 
 
     # METODI
+    @staticmethod
+    def insert_function():
+        configured_fun = [
+            {
+                'name':'ebay_get_report',
+                'ecom': 'EBAY_DE'
+            }
+            {
+                'name':'ebay_get_token',
+                'ecom': 'EBAY_DE'
+            }
+        ]
+
+        for f in configured_fun:
+            fun = Function.query.filter_by(name=f).first()
+            if fun is None:
+                ecom = Ecommerce.query.filter_by(name=f.ecom)
+                fun = Function(name=f.name, ecommerce_id=ecom.id )
+                db.session.add(fun)
+
+        db.session.commit()
+        print('funztion correctly entered!')
+
+
     def __repr__(self):
         return '<Function {}>'.format(self.name)
 
@@ -114,7 +122,7 @@ class Store(db.Model):
     store_name = db.Column(db.String(64))
 
     oauth_info = db.Column(db.String(4096))
-     
+
 
     # relazione N:1
     user_id = db.Column(db.Integer, db.ForeignKey('users.id') )
