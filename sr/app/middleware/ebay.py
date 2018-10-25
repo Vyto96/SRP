@@ -51,27 +51,39 @@ def ebay_get_report():
         start_date = '20181025'
         end_date = '20181022'
 
+        # params = {
+        #     'dimension': dim, #DAY | #LISTING
+        #     # 'sort': sort_field,
+        #     'filter': {
+        #         'marketplace_ids': '{'+ mktp +'}',
+        #         'date_range': '[' + start_date + '..' + end_date + ']' #YYYYMMDD
+        #     },
+        #     'metric':[
+        #         'TRANSACTION', # numero di transazioni completate
+        #         'LISTING_VIEWS_TOTAL', # numero totale di annunci visualizzati
+        #         'SALES_CONVERSION_RATE' # transazioni / visualizzazioni: ovvero quante delle effettive visualizzazioni diventano poi ordini
+        #     ]
+        # }
+
+
+        # encode_params = quote(str(params))
+
         params = {
-            'dimension': dim, #DAY | #LISTING
+            'dimension': dim,  # DAY | #LISTING
             # 'sort': sort_field,
-            'filter': {
-                'marketplace_ids': '{'+ mktp +'}',
-                'date_range': '[' + start_date + '..' + end_date + ']' #YYYYMMDD
-            },
-            'metric':[
-                'TRANSACTION', # numero di transazioni completate
-                'LISTING_VIEWS_TOTAL', # numero totale di annunci visualizzati
-                'SALES_CONVERSION_RATE' # transazioni / visualizzazioni: ovvero quante delle effettive visualizzazioni diventano poi ordini
-            ]
-
+            'filter': '{' + \
+                'marketplace_ids:' + '{' + mktp + '},' + \
+                'date_range:' + '[' + start_date + '..' + end_date + ']'
+                     '}',
+            'metric': 'TRANSACTION,LISTING_VIEWS_TOTAL,SALES_CONVERSION_RATE'
+                # numero di transazioni completate
+                # numero totale di annunci visualizzati
+                # transazioni / visualizzazioni: ovvero quante delle effettive visualizzazioni diventano poi ordini
         }
-
-
-        encode_params = quote(str(params))
 
         report = requests.get(url_api, headers=headers, params=encode_params)
 
-        return '<h1>report ricevuto:<br>{}</h1>'.format(report.text)
+        return '<h1>report ricevuto:<br>{}</h1>'.format(report.text, report)
 
     return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url), 401
 
