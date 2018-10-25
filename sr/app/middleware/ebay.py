@@ -48,7 +48,7 @@ def ebay_get_report():
 
         dim = 'DAY'
         mktp = 'EBAY_DE'
-        start_date = '20181022'
+        start_date = '20181015'
         end_date = '20181025'
 
         # params = {
