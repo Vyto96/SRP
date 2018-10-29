@@ -52,7 +52,7 @@ def hello():
 
     r = requests.get(url, headers=headers, params=payload)
 
-    return True
+    return 'True'
 
 ###################################################################################################################à
 # {
