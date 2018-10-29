@@ -32,6 +32,15 @@ def ebay_auth_code_response():
 
     return requests.post(url, data=payload, headers=headers).text
 
+
+@middle.route('/ebay/verify_token', methods=['POST'])
+def ebay_verify_token():
+
+
+
+
+
+
 ###################################################################################################################à
 
 
@@ -49,7 +58,7 @@ def ebay_get_report():
 
 
         dim = 'DAY'
-        mktp = 'EBAY_DE'
+        mktp = 'EBAY_DE' #request.headers.get
         start_date = '20181015'
         end_date = '20181025'
 
@@ -61,7 +70,11 @@ def ebay_get_report():
 
         response = requests.get(url_api, headers=headers, params=params)
 
-        r = response.json() 
+        r = response.json()
+
+        if 'errors' in r.keys():
+            return jsonify(error=r.get('errors')[0]['message'] , error_code=401)
+
 
         report = []
 
@@ -81,6 +94,7 @@ def ebay_get_report():
         return jsonify(report=report)
 
     return jsonify(error='token non ricevuto', error_code=401)
+
 
 
 
