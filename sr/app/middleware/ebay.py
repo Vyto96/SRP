@@ -93,14 +93,17 @@ def hello():
         'end_date':'20181029'
     }
 
+    used_token = 'access_token'
+
     r = requests.get(url, headers=headers, params=payload)
 
     if 'error' in r.json().keys():
         #refresha token
         headers['token'] = ref_tok
         r = requests.get(url, headers=headers, params=payload)
-
-    return jsonify( used_token=headers['token'], report=r.json() )
+        used_token = 'refresh_token'
+        
+    return jsonify( used_token=used_token, report=r.json() )
 
 ###################################################################################################################
 
