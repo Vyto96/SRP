@@ -61,7 +61,7 @@ def ebay_get_report():
 
         response = requests.get(url_api, headers=headers, params=params)
 
-        r = json.loads( response.json() )
+        r = response.json() 
 
         report = []
 
