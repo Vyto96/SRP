@@ -72,9 +72,17 @@ def ebay_refresh_token():
 
 @middle.route('/ebay/prova')
 def hello():
-    tok = "v^1.1#i^1#f^0#r^0#p^3#I^3#t^H4sIAAAAAAAAAOVYbWgTZxxv0pdRtAqjvuDciKeiqJc8d5e75G4mLPYFozWNTRWt2Prc3XPNzctduHvSGueg1qHgQMYodludKw7GlH2YY+6lOrcxZVMYFebGQJjuy9YPw0nBORm43aVtmtZNbeuHwPIl3PP8336//+//8NyBrorKVQfXH7xT5XrC3d8FutwuFzULVFaUr55T6l5UXgIKDFz9Xcu6yrpLh9ZaMKWlhSZkpQ3dQp49KU23hNxiiMiYumBAS7UEHaaQJWBJSEQ2NQi0Fwhp08CGZGiEJ1obIvwyI/NQCUiijBSa5uxVfSxmsxEieJYPSGyAlVhO4hSFtvctK4OiuoWhjkMEDaggSQGS5pspXgBAYIDXHwy0EJ6tyLRUQ7dNvIAI58oVcr5mQa0PLhVaFjKxHYQIRyP1icZItLYu1rzWVxArPMpDAkOcsSY+1Rgy8myFWgY9OI2VsxYSGUlClkX4wiMZJgYVImPFTKP8HNUixwBG4UWGBbwSAI+FyXrDTEH84DKcFVUmlZypgHSs4uzDCLXJEJ9HEh59itkhorUe529zBmqqoiIzRNSti2zfkqhrIjyJeNw0OlQZyQ5Qyk+zAS5AUTwRTmbTyHRSU+xompFYoxxPylNj6LLqMGZ5YgZeh2xHNJGZoMAWMGMbNeqNZkTBTj0FdjSVZ9Df4nR0pIUZnNSdpqKUTYMn9/hw/sf0MK6Ax6UICvIyS7H+AMsgGIDBf5OEM+tTlUXY6UwkHvc5tSARZskUNHcjnNaghEjJpjeTQqYqCwyr0ExQQaTM8Qrp5xWFFFmZIykFIYCQKEp88P+jDoxNVcxglFfI5I0cxBDhMCqoUBGwsRvpzTYGYrJl7tQZlcUeK0QkMU4LPl9nZ6e3k/EaZruPBoDybdvUkJCSKAWJvK36cGNSzQlEQraXpQrYLiBE7LH1ZyfX24lwU119U11ifVtz48a62Jh2J1QWnrz6H0gTkpFGcUNTpWxxQWRMOQ5NnE0gTbMXZgTSckAWBTxn1vMQnRiWHQSmVa+jOK9kpHwGtM8sZ6ktV7XnUYx8lk2Sd+QEsCN7TQRlQ9ey03Gego+qd9gjZJjZ6STMO0/BB0qSkdHxdNKNuk7BQ8loiqppzikxnYQF7lMpU4daFquSlU85I+FH0uloKpXBUNRQVC6KCRgfcECzPDdjeEWGqkPFtqhVg0ybzqwbHZCMN9WSDM+wwQAd9JOQk7kAJ0kzAr6pXS0y3BRL2Q3lGC4IQHBG2GpRR7E1lREZEAQBmWQQ4kk/klgS+nmaZCGrIMCILB1kZ4S5RlPtc6L47hnrDQsjeWbQ7OtwcYFy5nFsHCWOte+LCEmkX1Y4UvRLFMnQ1CN3c2yhjLn/ZnnfK4Vv4gt9uCT3o7pdZ0C367Tb5QI+sJxaCpZUlG4pK529yFIx8tq3UK+ltuv2e6qJvLtRNg1V013h2rH4/ZNtBZ8Q+neChfmPCJWl1KyCLwpg8fhOOTV3QRUVpADNUzwADGgBS8d3y6j5ZdWHxRVe8+t43FjTvFP+40Li2u0DraAqb+RylZeUdbtK2u4ec717+6509tu9r+jVV78Y9pPe/nM9x15eOXfw7i/PLG+sbj1wvGHHhuyaEy9+TtbdUJPnrsTe3PUNsfbHYZVl5x3a/97Cs6tulvbu3PfavL/euNmrvXAYn1rtvnRkV2tPbZgcLOn7+NpXAwv+3FCe0j+40Hqru3rJjeShq0d7T3uOvPRW36+xt+fQ1rpzlRd3rYjGKLUmLPrn/zbI9PDhE3Nl7vt9P9w5GbuXeHb/xeSpvuFXk0/t7y/77KfNX157Z6CZOXrgev31j3o+EfXjpz/98HJ0qD/rH3r9zDZt7wngG/juUuP5wYbL7nj7YMutjeefvLfS/TtJ/z37yvZTVfHh554eWvbzQO9I+/4BCSXWqdwRAAA="
 
-    refresh_token = "v^1.1#i^1#I^3#p^3#r^1#f^0#t^Ul4xMF82OjkwRkNDNzY5NzUzODg2QjgzODVGQTdFMzI4MTg5NzIwXzJfMSNFXjI2MA=="
+    UAtoken = {
+        "access_token":"v^1.1#i^1#f^0#r^0#p^3#I^3#t^H4sIAAAAAAAAAOVYW2wUVRjutNuSgqVKiBfAuEzVIGR2z8zsbUZ245a2ttDL0l0aRBDOzJxpp52dWWbObLsQpZZAYipEkURCSC1BEonESAIaI1ESHySQSOKDxoSoIRK0gWJoFCMQndm2y7aGS1seNnFfduc///X7v//sOQN6y8qX7qzfeb2CmFU82At6iwmCngPKy0qXzS0pXlBaBPIUiMHep3tdfSW/LjdhUk3xrchM6ZqJ3D1JVTP5rDBMWobG69BUTF6DSWTyWOTj0aZGnvEAPmXoWBd1lXQ31IRJGiBZCAkikCCURQbYUm3cZ0IPk1JAZhDnC9LI+YFEe900LdSgmRhqOEwygA5RNKAYLkFzPMvxPuAJBZh1pLsNGaaia7aKB5CRbLp81tbIy/XuqULTRAa2nZCRhmhdvCXaUFPbnFjuzfMVGcMhjiG2zIlPK3QJudugaqG7hzGz2nzcEkVkmqQ3MhpholM+Op7MNNLPQs1JNMtwCAggyAowiB4IlHW6kYT47nk4EkWi5KwqjzSs4My9ELXREDqRiMeemm0XDTVu52u1BVVFVpARJmuroy+tide2ku54LGboaUVCUpZUPgb4AMcEGTKSzmCdC4xFGHUzhu+kECt0TVIctEx3s46rkZ0umgwKkweKrdSitRhRGTup5Okx9Dh4/tA6p5uj7bNwh+Y0FCVtBNzZx3tDP86F291/UGxgod8nAA76BU7y+cTQndjgzPpUGBFxmhKNxbxOLkiAGSoJjS6EUyoUESXa8FpJZCgSz/plhg3JiJICnEz5OFmmBL8UoGgZIYCQIIhc6H9BDIwNRbAwypFj8kK2ujDpgMkrUOax3oW0RCaFyMma2c1mjBE9ZpjswDjFe73d3d2ebtajG+1eBgDau7apMS52oCQkc7rKvZUpJcsN0d44bH0e2wmEyR6benZwrZ2MtNbWtdbG6zcmWlbVNo/TdkJmkcnSO1QaF/UUiumqImYKq0TWkGLQwJk4UlVbMKMiTafIwirPmXXHh2k7gSnF4zDOI+pJrw7t7coRbcxm7b4fJa9pg+QZHX7bu8dAUNI1NTMd4ynYKFraHiHdyEwnYM54CjZQFHVLw9MJN2Y6BQvZUmVFVZ1dYjoB88ynkqYG1QxWRDMXckbEj6ZSDcmkhaGgogapsCaABYw/96cw/fIKrKq0gm1SKzpln73TkIq11lCsM+sc6w8FmZCPggEpEAyI4owKb2pXCqxu2g8CHE2zgAOAmVFtNShdaE1lBRaEQFCiWIQ4yodEPwV9HEP5oV9GgBX8TMg/o5pXqIq9TxTeOaNeNzGSZlaafRIurKKcmRwfRzHgt8+L9mWX8klygBJ8Ik2xDH3f3ZwkiGPX0tzJ8j+3Ce/Ee3ykKPuh+4gToI84VkwQwAueoavA4rKSNa6ShxaYCkYe+xTqMZV2zb6eGsjThTIpqBjFZcTLiz4+sjHvzcHgBvB47t1BeQk9J+9FAlh0e6WUrnysgg7RgOFojuV8YB2our3qoh91zf/+6qmv/iw5VvFa28m/tm1t7NjCDp8DFTklgigtcvURRbt2f3Ag9Mq+TZ0bOg8NfQHIlWe3rY4M/36r/N3ZPQtXvnll9yOp7sUjI1XcocqBIXBtJDPv3PlPOw9bFVe2tH47nDaDpwe2X/ptQ1vlbP/Fxuv/vBGoOU1cnf/zH3vXvz2XuGR5yM+XnNiz/cXnH95f1xlM7Hjvo76TVU88uXnwuV9W9y06+oly63h1+tRTZP8Lu7c3ndWbnj187cIRInFw6HKE2gVvfbnsB544vKt/yaybZ965MbwgvoQ+ldg8Z8/5gyeW3xhBF183tokDsdk/9V/9en/TzX3HXw3s3TSw5puhrZfBhzvQZwsvrj3jcx2tk690vd+//4JUb61aG5i3/sDf3/1Y6Wp+Y/Nb1UOj7fsX2vcjldMRAAA=",
+        "expires_in":7200,
+        "refresh_token":"v^1.1#i^1#f^0#p^3#I^3#r^1#t^Ul4xMF82OkIwOUEzQjFDOTBEOUI5NUVDQzY1RThCREExQjE2Mjk1XzJfMSNFXjI2MA==",
+        "refresh_token_expires_in":47304000,
+        "token_type":"User Access Token"
+    }
+
+    tok = UAtoken['access_token']
+    refresh_token = UAtoken['refresh_token']
 
     resp = requests.post(
                 url="https://salesreporter.ddns.net/middle/ebay/refresh_token",
@@ -102,7 +110,7 @@ def hello():
         headers['token'] = ref_tok
         r = requests.get(url, headers=headers, params=payload)
         used_token = 'refresh_token'
-        
+
     return jsonify( used_token=used_token, report=r.json() )
 
 ###################################################################################################################
