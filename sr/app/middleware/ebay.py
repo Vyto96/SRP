@@ -69,45 +69,45 @@ def ebay_get_report():
     # mktp = request.args['marketplace'] #request.headers.get
     # start_date = request.args['start_date']
     # end_date = request.args['end_date']
+    if tk:
+        mktp = 'EBAY_DE'
+        start_date = '20181020'
+        end_date = '20181029'
 
-    mktp = 'EBAY_DE'
-    start_date = '20181020'
-    end_date = '20181029'
 
+        url_api = 'https://api.ebay.com/sell/analytics/v1/traffic_report'
+        auth = 'Bearer ' + tk
+        headers = { 'Authorization': auth }
+        dim = 'DAY'
 
-    url_api = 'https://api.ebay.com/sell/analytics/v1/traffic_report'
-    auth = 'Bearer ' + tk
-    headers = { 'Authorization': auth }
-    dim = 'DAY'
+        params = {
+            "filter": 'marketplace_ids:{' + mktp + '},date_range:[' + start_date + '..' + end_date +']',
+            "dimension": dim,
+            "metric": "LISTING_VIEWS_TOTAL,TRANSACTION,SALES_CONVERSION_RATE"
+        }
 
-    params = {
-        "filter": 'marketplace_ids:{' + mktp + '},date_range:[' + start_date + '..' + end_date +']',
-        "dimension": dim,
-        "metric": "LISTING_VIEWS_TOTAL,TRANSACTION,SALES_CONVERSION_RATE"
-    }
+        response = requests.get(url_api, headers=headers, params=params)
 
-    response = requests.get(url_api, headers=headers, params=params)
+        r = response.json()
 
-    r = response.json()
+        if 'errors' in r.keys():
+            return jsonify(error=r.get('errors')[0]['message'] , error_code=401)
 
-    if 'errors' in r.keys():
-        return jsonify(error=r.get('errors')[0]['message'] , error_code=401)
+        report = []
+        for i in r['records']:
+            date = i['dimensionValues'][0]['value']
+            date = date[:4] + '/' + date[4:6] + '/' + date[6:8]
+            tot_views = i['metricValues'][0]['value']
+            transactions = i['metricValues'][1]['value']
+            scr = i['metricValues'][2]['value'] #SALES_CONVERSION_RATE
 
-    report = []
-    for i in r['records']:
-        date = i['dimensionValues'][0]['value']
-        date = date[:4] + '/' + date[4:6] + '/' + date[6:8]
-        tot_views = i['metricValues'][0]['value']
-        transactions = i['metricValues'][1]['value']
-        scr = i['metricValues'][2]['value'] #SALES_CONVERSION_RATE
+            report.append({ 'date': date,
+                            'tot_views': tot_views,
+                            'transactions': transactions,
+                            'scr': scr
+                            })
 
-        report.append({ 'date': date,
-                        'tot_views': tot_views,
-                        'transactions': transactions,
-                        'scr': scr
-                        })
-
-    return jsonify(report=report)
+        return jsonify(report=report)
 
 
 
