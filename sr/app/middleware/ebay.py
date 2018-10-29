@@ -52,7 +52,7 @@ def hello():
 
     r = requests.get(url, headers=headers, params=payload)
 
-    return jsonify( r.json() )
+    return True
 
 ###################################################################################################################à
 # {
@@ -65,23 +65,10 @@ def hello():
 
 @middle.route('/ebay/get_report')
 def ebay_get_report():
-    #HEADERS RICHIESTI A CHI USA L'API:
-    # TODO:     #TOKEN DI AUTENTICAZIONE---> (validita' del token delegata ad'un altra API chiamata prima di questa)
-    #PARAMS
-    # UAtoken = json.loads( request.headers.get('token') )
-    #
-    # if 'access_token' not in UAtoken.keys():
-    #     return jsonify(error='User Access token non ricevuto correttamente', error_code=401)
-    #
-    # tk = UAtoken['access_token']
 
     tk = request.headers.get('token')
 
-
     if tk:
-        # mktp = 'EBAY_DE'
-        # start_date = '20181020'
-        # end_date = '20181029'
         mktp = request.args['marketplace'] #request.headers.get
         start_date = request.args['start_date']
         end_date = request.args['end_date']
@@ -125,24 +112,3 @@ def ebay_get_report():
                         report=report)
     else:
         return jsonify(error='token non ricevuto' , error_code=401)
-        # return jsonify( tk )
-
-
-
-
-
-    # s = Store(store_name='Ebay', oauth_info=json.dumps( r.json() ))
-    # db.session.add(s)
-    # db.session.commit()
-
-# devo fare load per far diventare json in dict e
-#  poi dump per farla diventare stringa con eventuali valori NULL invece che none
-
-
-  # {
-  #   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
-  #   "expires_in": 7200,
-  #   "refresh_token": "v^1.1#i^1#p^3#r^1...zYjRV4xMjg0",
-  #   "refresh_token_expires_in": 47304000,
-  #   "token_type": "User Access Token"
-  # }
