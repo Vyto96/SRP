@@ -44,27 +44,27 @@ def hello():
 
 
 ###################################################################################################################à
-
+# {
+#   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
+#   "expires_in": 7200,
+#   "refresh_token": "v^1.1#i^1#p^3#r^1...zYjRV4xMjg0",
+#   "refresh_token_expires_in": 47304000,
+#   "token_type": "User Access Token"
+# }
 
 @middle.route('/ebay/get_report')
 def ebay_get_report():
     #HEADERS RICHIESTI A CHI USA L'API:
     # TODO:     #TOKEN DI AUTENTICAZIONE---> (validita' del token delegata ad'un altra API chiamata prima di questa)
     #PARAMS
-    UAtoken = json.loads( request.headers.get('UAtoken') )
+    # UAtoken = json.loads( request.headers.get('token') )
+    #
+    # if 'access_token' not in UAtoken.keys():
+    #     return jsonify(error='User Access token non ricevuto correttamente', error_code=401)
+    #
+    # tk = UAtoken['access_token']
 
-    if 'access_token' not in UAtoken.keys():
-        return jsonify(error='User Access token non ricevuto correttamente', error_code=401)
-
-    tk = UAtoken['access_token']
-
-  # {
-  #   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
-  #   "expires_in": 7200,
-  #   "refresh_token": "v^1.1#i^1#p^3#r^1...zYjRV4xMjg0",
-  #   "refresh_token_expires_in": 47304000,
-  #   "token_type": "User Access Token"
-  # }
+    tk = request.headers.get('token')
 
     mktp = request.args.get('marketplace') #request.headers.get
     start_date = request.args.get('start_date')
