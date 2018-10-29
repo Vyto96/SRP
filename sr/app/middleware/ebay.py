@@ -66,28 +66,38 @@ def ebay_refresh_token():
 
     resp = json.loads( requests.post(url, data=payload, headers=headers).text )
 
-    return jsonify( resp['access_token'] )
+    return jsonify( access_token=resp['access_token'] )
 
 
 
 
-# @middle.route('/ebay/')
-# def hello():
-#     tok = 'v^1.1#i^1#f^0#p^3#I^3#r^0#t^H4sIAAAAAAAAAOVYbWwTZRxft27y4jSiQbOQ0B0sEsi1z732ellLunVjFdjKOkAHOO7lue3c9a7ePV1XAdmGYYKI8QNRE9ERTHxJeDUYIcYIEhM0IiExkpCgRsUZoglqQIkR77pu6yYC2/jQxH1Z7nn+b7/f//d/+tyBnrLpC7c2bL1a7rqreKAH9BS7XMRMML2sdNE9JcUVpUUgz8A10DO/x91XMlhtCQktyTdDK2noFvR0JzTd4rOLQSxl6rwhWKrF60ICWjyS+Hh4+TKe9AI+aRrIkAwN80QjQUyAkhjwS36F5jiR9kN7VR+O2WIEMTZA0IABNEeREuNXCHvfslIwqltI0FEQIwHB4QTAyUALwfI04CngpSiyFfOsgqalGrpt4gVYKFsun/U182q9eamCZUET2UGwUDRcH28KRyN1jS3VvrxYoRwPcSSglDX2qdaQoWeVoKXgzdNYWWs+npIkaFmYLzSUYWxQPjxczCTKz1It+WkOioARWYmFDMHeESrrDTMhoJvX4ayoMq5kTXmoIxVlbsWozYb4BJRQ7qnRDhGNeJx/K1KCpioqNINYXU34sZXxumbME4/FTKNLlaHsICVokvGzfoIIYKGOTBKaTmqCyaUZipUjeVyeWkOXVYcyy9NooBpoO8LxzFB5zNhGTXqTGVaQU0++HTfMIMm1Oi0d6mEKdehOV2HCpsGTfbw1/8OCGJXAnZIEKzOA40hGViiakpXADSThzPqEZRFyOhOOxXxOLVAUMnhCMDshSmqCBHHJpjeVgKYq8xSjkBSnQFxmAwpOBxQFFxmZxQkFQgChKEoB7v+jDoRMVUwhOKKQ8RtZiEHMYZRXBYVHRifUW2wM2HjL7LGTk0W3FcQ6EEryPl86nfamKa9htvtIAAjfo8uXxaUOmBCwEVv11sa4mhWIZJ/Wtj2P7AKCWLetPzu53o6Fmuvqm+viDW0tTUvrGoe1O6ay0PjV/0Aal4wkjBmaKmUKCyJlyjHBRJk41DR7YUogLQdkIcBzZn0UohPDsoMISdXrKM4rGQmfIdhnlrPUlq3acztGPssmyTt0AtiRvSYUZEPXMpNxnoCPqnfZI2SYmckkHHGegI8gSUZKR5NJl3OdgIeS0hRV05xTYjIJ89wnUqYuaBmkStZIyikJP5xMRhOJFBJEDUblQpiAvAEHJBNgpwyvwFB1qcgWtWrgSWfW7R9FAY81R3AqQDGcn+RoXGBl1s9K0pSAL29XCww3wRB2Q1mK5QDgpoQtArsKramUSAEO+GWcgjCA01BicIEOkDgjMAoElMiQHDMlzLWaap8ThXfPaDAsBOWpQbOvw4UFypnH4XGUWMa+L0Io4bSssLhISwROkcRtdzO34KZvcLP81yuFb+wbfago+0f0uY6APtehYpcL+EAVMQ9UlpWsdJfcXWGpCHrtW6jXUtt1+0XVhN5OmEkKqllc5loz5+DbbXnfEAbWgYdGviJMLyFm5n1SAHNGd0qJex8sJzgCkAGCpQEFWsG80V03Mdv9gDbrwu/q1ir/rpodoeqGytkLDw72gvIRI5ertMjd5yqaUXO/tfnwMxf3nv^1.1#i^1#r^0#I^3#f^0#p^3#t^H4sIAAAAAAAAAOVYW2wUVRjudtuSirWBcNHKwzIgQcnsnpnZmd2ZsAtLL+kCbZduQShoc2bmTDswO7PMnG274aVpAiEhoGBQTIwpRLlGQARi0Bei8QEVId5CYhQ0IUYDjYHEiFE8s71tKwJtedjEzSab85//9n3//589M6CnrPy5bfXbfq/wTCnu6wE9xR4PMxWUl5UuesJbXFVaBPIUPH0983tKer0/L3ZgykhLzchJW6aDfN0pw3SknDBCZWxTsqCjO5IJU8iRsCIlYw0rJdYPpLRtYUuxDMoXr4lQUOUBBAhxISAIWoghUnPIZ4sVoUSOFYJBAcoyEkVGkMm+42RQ3HQwNHGEYgETphlAs2ILw0u8KPEhPxBCrZRvDbId3TKJih9Q0Vy6Us7Wzsv1/qlCx0E2Jk6oaDxWl2yKxWtqG1sWB/J8RQd5SGKIM87oVbWlIt8aaGTQ/cM4OW0pmVEU5DhUIDoQYbRTKTaUzATSz1HNcBDySBOhHOYI1fCRUFln2SmI75+HK9FVWsupSsjEOs4+iFHChrwRKXhw1UhcxGt87s+qDDR0TUd2hKpdFlu3OlnbTPmSiYRtdeoqUnNIgywfEkIMI1LRjmwa2W5ohh8MM+BrkOQxcaotU9Vdyhxfo4WXIWKIxjITzGOGKDWZTXZMw24++XqhYQb5VrekAzXM4A7TrSpKERp8ueWD+R9qiJEWeFQtwctBXtDC5BsKyyy8V0u4sz7utoi6lYklEgE3FyTDLJ2C9iaE0wZUEK0QejMpZOuqxPEay4U1RKuCqNFBUdNomVcFmtEQIqeCLCti+P/THRjbupzBaLhDxm7kIEYol1FJh5qErU3IbCEYqLGauWNnsC26nQjVgXFaCgS6urr8XZzfstsDLABMYG3DyqTSgVKk8kO6+oOVaT3XIAoiVo4uYZJAhOom/UeCm+1UtLm2rrk2Wd/W0rSitnGod0dlFh0r/Q+kScVKo4Rl6Eq2sCBytpqANs4mkWEQwaRAOi7IQoDnzvoIRNeHQ5zAtO53O86vWKmABcmZ5Yracln7HkYp4BCS/AMnAPHstxFULdPITsR4HDa62UlGyLKzEwk4bDwOG6goVsbEEwk3aDoOCy1jaLphuKfERALmmY8nTRMaWawrznDISTV+LJ2Op1IZDGUDxdVCmIC8AQcsLwqThldgqDp1TJpat+i0O+vkTxHSieYamhM5Phxiw0EaCqoQEhRlUsAb2vUCw83wDCmowAlhAMKTwlaDOgutqJzMgTAIqTSHkEgHkcLTMCiyNA95DQFO5tkwPynM1YZOzonCu2fUWw5G6uSgketwYYFy53FoHBWBJ/dFhBQ6qGoCLQcVhuZY5qGrOSgoCd7jZvmvR4rA6Cf6aFHuw/R6zoBez7vFHg8IgGeYeWBumXd1iffxKkfHyE9uoX5HbzfJg6qN/JtQNg11u7jMs37OySNtee8Q+l4ATw6/RSj3MlPzXimAOSM7pUzl7AomzABWZHhe5EOtYN7Ibgkzq2TGfOfX6sPltcEl33/8Rv2B6YvpC+YuUDGs5PGUFpX0eopmb9h77Owfvc9v2Vbk7Kyc3fX3hvOfVuxfoL8aO3m856v9h6c93R36fNq03y7tmvLs8rZvV23Vp79+94PXbrWGlxyg++Z473BfR68e+qShvsrYe4d9+5sdh42ru2ferrx9+dJxfsF155eP8FpPU/M+VlzwGV6623uuvu6Lv95j3zzRtGd/38ET1/dFnrq24seLO0o8X66DG26fWfj+mrmXZwq31M17D1WdPX/qSnbPy6ny1vUHt9wU+r0v3ujeGPS9dWHrtf5972y3b/60Q6du3Phu8w/ZPz0n+s/NWuFbPmM73V8ZB5u9RxbtOs2ApRVX51/ZE7646KVbp88d2bmq49grp+iN1NzHoguPHr27+sOB8v0D5gwpOt0RAAA='
-#
-#     url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
-#     headers = {
-#         'token': tok
-#     }
-#     payload = {
-#         'marketplace':'EBAY_DE',
-#         'start_date':'20181020',
-#         'end_date':'20181029'
-#     }
-#
-#     r = requests.get(url, headers=headers, params=payload)
-#
-#     return jsonify( r.json() )
+@middle.route('/ebay/')
+def hello():
+    tok = "v^1.1#i^1#f^0#r^0#p^3#I^3#t^H4sIAAAAAAAAAOVYbWgTZxxv0pdRtAqjvuDciKeiqJc8d5e75G4mLPYFozWNTRWt2Prc3XPNzctduHvSGueg1qHgQMYodludKw7GlH2YY+6lOrcxZVMYFebGQJjuy9YPw0nBORm43aVtmtZNbeuHwPIl3PP8336//+//8NyBrorKVQfXH7xT5XrC3d8FutwuFzULVFaUr55T6l5UXgIKDFz9Xcu6yrpLh9ZaMKWlhSZkpQ3dQp49KU23hNxiiMiYumBAS7UEHaaQJWBJSEQ2NQi0Fwhp08CGZGiEJ1obIvwyI/NQCUiijBSa5uxVfSxmsxEieJYPSGyAlVhO4hSFtvctK4OiuoWhjkMEDaggSQGS5pspXgBAYIDXHwy0EJ6tyLRUQ7dNvIAI58oVcr5mQa0PLhVaFjKxHYQIRyP1icZItLYu1rzWVxArPMpDAkOcsSY+1Rgy8myFWgY9OI2VsxYSGUlClkX4wiMZJgYVImPFTKP8HNUixwBG4UWGBbwSAI+FyXrDTEH84DKcFVUmlZypgHSs4uzDCLXJEJ9HEh59itkhorUe529zBmqqoiIzRNSti2zfkqhrIjyJeNw0OlQZyQ5Qyk+zAS5AUTwRTmbTyHRSU+xompFYoxxPylNj6LLqMGZ5YgZeh2xHNJGZoMAWMGMbNeqNZkTBTj0FdjSVZ9Df4nR0pIUZnNSdpqKUTYMn9/hw/sf0MK6Ax6UICvIyS7H+AMsgGIDBf5OEM+tTlUXY6UwkHvc5tSARZskUNHcjnNaghEjJpjeTQqYqCwyr0ExQQaTM8Qrp5xWFFFmZIykFIYCQKEp88P+jDoxNVcxglFfI5I0cxBDhMCqoUBGwsRvpzTYGYrJl7tQZlcUeK0QkMU4LPl9nZ6e3k/EaZruPBoDybdvUkJCSKAWJvK36cGNSzQlEQraXpQrYLiBE7LH1ZyfX24lwU119U11ifVtz48a62Jh2J1QWnrz6H0gTkpFGcUNTpWxxQWRMOQ5NnE0gTbMXZgTSckAWBTxn1vMQnRiWHQSmVa+jOK9kpHwGtM8sZ6ktV7XnUYx8lk2Sd+QEsCN7TQRlQ9ey03Gego+qd9gjZJjZ6STMO0/BB0qSkdHxdNKNuk7BQ8loiqppzikxnYQF7lMpU4daFquSlU85I+FH0uloKpXBUNRQVC6KCRgfcECzPDdjeEWGqkPFtqhVg0ybzqwbHZCMN9WSDM+wwQAd9JOQk7kAJ0kzAr6pXS0y3BRL2Q3lGC4IQHBG2GpRR7E1lREZEAQBmWQQ4kk/klgS+nmaZCGrIMCILB1kZ4S5RlPtc6L47hnrDQsjeWbQ7OtwcYFy5nFsHCWOte+LCEmkX1Y4UvRLFMnQ1CN3c2yhjLn/ZnnfK4Vv4gt9uCT3o7pdZ0C367Tb5QI+sJxaCpZUlG4pK529yFIx8tq3UK+ltuv2e6qJvLtRNg1V013h2rH4/ZNtBZ8Q+neChfmPCJWl1KyCLwpg8fhOOTV3QRUVpADNUzwADGgBS8d3y6j5ZdWHxRVe8+t43FjTvFP+40Li2u0DraAqb+RylZeUdbtK2u4ec717+6509tu9r+jVV78Y9pPe/nM9x15eOXfw7i/PLG+sbj1wvGHHhuyaEy9+TtbdUJPnrsTe3PUNsfbHYZVl5x3a/97Cs6tulvbu3PfavL/euNmrvXAYn1rtvnRkV2tPbZgcLOn7+NpXAwv+3FCe0j+40Hqru3rJjeShq0d7T3uOvPRW36+xt+fQ1rpzlRd3rYjGKLUmLPrn/zbI9PDhE3Nl7vt9P9w5GbuXeHb/xeSpvuFXk0/t7y/77KfNX157Z6CZOXrgev31j3o+EfXjpz/98HJ0qD/rH3r9zDZt7wngG/juUuP5wYbL7nj7YMutjeefvLfS/TtJ/z37yvZTVfHh554eWvbzQO9I+/4BCSXWqdwRAAA="
+
+	refresh_token = "v^1.1#i^1#I^3#p^3#r^1#f^0#t^Ul4xMF82OjkwRkNDNzY5NzUzODg2QjgzODVGQTdFMzI4MTg5NzIwXzJfMSNFXjI2MA=="
+
+    resp = requests.post(
+                url="https://salesreporter.ddns.net/middle/ebay/refresh_token",
+                data={'refresh_token': refresh_token}
+                )
+
+    ref_tok = resp.json()['access_token']
+
+    url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
+    headers = {
+        'token': ref_tok # tok
+
+    }
+    payload = {
+        'marketplace':'EBAY_DE',
+        'start_date':'20181020',
+        'end_date':'20181029'
+    }
+
+    r = requests.get(url, headers=headers, params=payload)
+
+    return jsonify( r.json() )
 
 ###################################################################################################################
 
