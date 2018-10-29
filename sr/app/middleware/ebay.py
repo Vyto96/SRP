@@ -1,4 +1,4 @@
-from flask import jsonify, redirect, request
+from flask import jsonify, redirect, request, json
 from .. import db
 from ..models import Store
 from . import middle
@@ -59,7 +59,9 @@ def ebay_get_report():
             "metric": "LISTING_VIEWS_TOTAL,TRANSACTION,SALES_CONVERSION_RATE"
         }
 
-        r = requests.get(url_api, headers=headers, params=params)
+        response = requests.get(url_api, headers=headers, params=params)
+
+        r = json.loads( response.json() )
 
         report = []
 
