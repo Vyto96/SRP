@@ -1,8 +1,8 @@
-from flask import jsonify, redirect, request, url_for, json, make_response
+from flask import jsonify, redirect, request
 from .. import db
 from ..models import Store
 from . import middle
-import requests, os, base64
+import requests, os
 from urllib.parse import unquote, quote
 
 
@@ -18,7 +18,7 @@ def ebay_auth_code_response():
     # POST REQ per chiedere il token
     url = 'https://api.ebay.com/identity/v1/oauth2/token'
     #HEADER
-    headers = {
+    headers = {base64
         'Content-Type': "application/x-www-form-urlencoded",
         'Authorization': os.environ.get('EBAY_B64_CREDENTIAL')
     }
@@ -32,11 +32,13 @@ def ebay_auth_code_response():
 
     return requests.post(url, data=payload, headers=headers).text
 
+###################################################################################################################à
+
 
 @middle.route('/ebay/get_report')
 def ebay_get_report():
     #HEADERS RICHIESTI A CHI USA L'API:
-        #TOKEN DI AUTENTICAZIONE---> (validita' del token delegata ad'un altra API chiamata prima di questa)
+    # TODO:     #TOKEN DI AUTENTICAZIONE---> (validita' del token delegata ad'un altra API chiamata prima di questa)
     #PARAMS
     tk = request.headers.get('token')
 
@@ -51,39 +53,37 @@ def ebay_get_report():
         start_date = '20181015'
         end_date = '20181025'
 
-        # params = {
-        #     'dimension': dim, #DAY | #LISTING
-        #     # 'sort': sort_field,
-        #     'filter': {
-        #         'marketplace_ids': '{'+ mktp +'}',
-        #         'date_range': '[' + start_date + '..' + end_date + ']' #YYYYMMDD
-        #     },
-        #     'metric':[
-        #         'TRANSACTION', # numero di transazioni completate
-        #         'LISTING_VIEWS_TOTAL', # numero totale di annunci visualizzati
-        #         'SALES_CONVERSION_RATE' # transazioni / visualizzazioni: ovvero quante delle effettive visualizzazioni diventano poi ordini
-        #     ]
-        # }
-
-
-        # encode_params = quote(str(params))
-
         params = {
             "filter": 'marketplace_ids:{' + mktp + '},date_range:[' + start_date + '..' + end_date +']',
             "dimension": dim,
             "metric": "LISTING_VIEWS_TOTAL,TRANSACTION,SALES_CONVERSION_RATE"
         }
 
-        report = requests.get(url_api, headers=headers, params=params)
+        r = requests.get(url_api, headers=headers, params=params)
 
-        return '<h1>report ricevuto:<br>{}</h1>'.format(report.text, report)
+        report = []
 
-    return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url), 401
+        for i in r['records']:
+            date = i['dimensionValues'][0]['value']
+            date = date[:4] + '/' + date[4:6] + '/' + date[6:8]
+            tot_views = i['metricValues'][0]['value']
+            transactions = i['metricValues'][1]['value']
+            scr = i['metricValues'][2]['value'] #SALES_CONVERSION_RATE
+
+            report.append({ 'date': date,
+                            'tot_views': tot_views,
+                            'transactions': transactions,
+                            'scr': scr
+                            })
+
+        return jsonify(report=report)
+
+    return jsonify('error':'token non ricevuto', 'error-code': 401)
 
 
-    # if token:
-    #     return '<h1>TOKEN RICEVUTO</h1>'
-    # return '<h1>TOKEN NON RICEVUTO<br>URL:{}</h1>'.format(url)
+
+
+
     # s = Store(store_name='Ebay', oauth_info=json.dumps( r.json() ))
     # db.session.add(s)
     # db.session.commit()
@@ -91,7 +91,7 @@ def ebay_get_report():
 # devo fare load per far diventare json in dict e
 #  poi dump per farla diventare stringa con eventuali valori NULL invece che none
 
-  #
+
   # {
   #   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
   #   "expires_in": 7200,
