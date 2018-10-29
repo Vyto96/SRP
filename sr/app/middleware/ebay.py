@@ -53,8 +53,8 @@ def ebay_get_report():
     #PARAMS
     UAtoken = json.loads( request.headers.get('UAtoken') )
 
-    if not UAtoken:
-        return jsonify(error='User Access token non ricevuto', error_code=401)
+    if 'access_token' not in UAtoken.keys():
+        return jsonify(error='User Access token non ricevuto correttamente', error_code=401)
 
     tk = UAtoken['access_token']
 
@@ -66,9 +66,9 @@ def ebay_get_report():
   #   "token_type": "User Access Token"
   # }
 
-    mktp = request.headers.get('marketplace') #request.headers.get
-    start_date = request.headers.get('start_date')
-    end_date = request.headers.get('end_date')
+    mktp = request.args.get('marketplace') #request.headers.get
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
 
 
     url_api = 'https://api.ebay.com/sell/analytics/v1/traffic_report'
