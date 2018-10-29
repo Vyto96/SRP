@@ -45,8 +45,8 @@ def hello():
         'token': tok
     }
     payload = {
-        'marketplace':'EBAY_DE'
-        'start_date':'20181020'
+        'marketplace':'EBAY_DE',
+        'start_date':'20181020',
         'end_date':'20181029'
     }
 
