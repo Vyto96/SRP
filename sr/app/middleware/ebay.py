@@ -64,7 +64,7 @@ def ebay_refresh_token():
                 'scope': os.environ.get('EBAY_SCOPE_LIST')
     }
 
-    resp = json.loads( requests.post(url, data=payload, headers=headers).json() )
+    resp = json.loads( requests.post(url, data=payload, headers=headers).text )
 
     return jsonify( resp['access_token'] )
 
