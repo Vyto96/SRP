@@ -104,6 +104,8 @@ def ebay_get_report():
         if 'errors' in r.keys():
             return jsonify(error='ERRORE: ' + r.get('errors')[0]['message'] , error_code=401)
 
+        start_report = r['startDate'][:10]
+        end_report = r['endDate'][:10]
         report = []
         for i in r['records']:
             date = i['dimensionValues'][0]['value']
@@ -118,7 +120,9 @@ def ebay_get_report():
                             'scr': scr
                             })
 
-        return jsonify(report=report)
+        return jsonify( start_report=start_report,
+                        end_report=end_report,
+                        report=report)
     else:
         return jsonify(error='token non ricevuto' , error_code=401)
         # return jsonify( tk )
