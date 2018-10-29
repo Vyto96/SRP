@@ -66,9 +66,9 @@ def ebay_get_report():
 
     tk = request.headers.get('token')
 
-    mktp = request.args.['marketplace'] #request.headers.get
-    start_date = request.args.['start_date']
-    end_date = request.args.['end_date']
+    mktp = request.args['marketplace'] #request.headers.get
+    start_date = request.args['start_date']
+    end_date = request.args['end_date']
 
 
     url_api = 'https://api.ebay.com/sell/analytics/v1/traffic_report'
