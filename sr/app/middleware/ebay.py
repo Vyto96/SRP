@@ -18,7 +18,7 @@ def ebay_auth_code_response():
     # POST REQ per chiedere il token
     url = 'https://api.ebay.com/identity/v1/oauth2/token'
     #HEADER
-    headers = {base64
+    headers = {
         'Content-Type': "application/x-www-form-urlencoded",
         'Authorization': os.environ.get('EBAY_B64_CREDENTIAL')
     }
