@@ -50,7 +50,7 @@ def ebay_get_report():
     # TODO:     #TOKEN DI AUTENTICAZIONE---> (validita' del token delegata ad'un altra API chiamata prima di questa)
     #PARAMS
     UAtoken = json.loads( request.headers.get('UAtoken') )
-    if !UAtoken:
+    if not UAtoken:
         return jsonify(error='User Access token non ricevuto', error_code=401)
 
     tk = UAtoken['access_token']
