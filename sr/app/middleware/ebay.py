@@ -48,8 +48,7 @@ def ebay_auth_code_response():
 
 @middle.route('/ebay/refresh_token', methods=['POST'])
 def ebay_refresh_token():
-    data = request.data
-    dataDict = json.loads(data)
+    refresh_token = request.form['refresh_token']
 
     url = 'https://api.ebay.com/identity/v1/oauth2/token'
     headers = {
@@ -60,7 +59,7 @@ def ebay_refresh_token():
     #BODY
     payload = {
                 'grant_type': 'refresh_token',
-                'refresh_token': dataDict['refresh_token'],
+                'refresh_token': refresh_token,
                 'scope': os.environ.get('EBAY_SCOPE_LIST')
     }
 
@@ -83,21 +82,23 @@ def hello():
                 )
 
     ref_tok = resp.json()['access_token']
+    return jsonify(ref_tok)
 
-    url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
-    headers = {
-        'token': ref_tok # tok
 
-    }
-    payload = {
-        'marketplace':'EBAY_DE',
-        'start_date':'20181020',
-        'end_date':'20181029'
-    }
-
-    r = requests.get(url, headers=headers, params=payload)
-
-    return jsonify( r.json() )
+    # url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
+    # headers = {
+    #     'token': ref_tok # tok
+    #
+    # }
+    # payload = {
+    #     'marketplace':'EBAY_DE',
+    #     'start_date':'20181020',
+    #     'end_date':'20181029'
+    # }
+    #
+    # r = requests.get(url, headers=headers, params=payload)
+    #
+    # return jsonify( r.json() )
 
 ###################################################################################################################
 
