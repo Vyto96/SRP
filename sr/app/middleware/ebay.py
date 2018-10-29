@@ -78,7 +78,7 @@ def ebay_get_report():
 
         return jsonify(report=report)
 
-    return jsonify('error':'token non ricevuto', 'error-code': 401)
+    return jsonify(error='token non ricevuto', error_code=401)
 
 
 
