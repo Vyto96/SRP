@@ -91,7 +91,7 @@ def ebay_get_report():
         r = response.json()
 
         if 'errors' in r.keys():
-            return jsonify(error=r.get('errors')[0]['message'] , error_code=401)
+            return jsonify(error='ERRORE: ' + r.get('errors')[0]['message'] , error_code=401)
 
         report = []
         for i in r['records']:
