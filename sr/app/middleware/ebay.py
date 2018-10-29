@@ -101,7 +101,7 @@ def ebay_get_report():
                         'scr': scr
                         })
 
-    return jsonify(report=report, 200)
+    return jsonify(report=report)
 
 
 
