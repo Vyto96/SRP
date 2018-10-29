@@ -38,18 +38,14 @@ def ebay_auth_code_response():
 
 @middle.route('/ebay/')
 def hello():
-    tok = 'v^1.1#i^1#r^0#I^3#f^0#p^3#t^H4sIAAAAAAAAAOVYW2wUVRjudtuSirWBcNHKwzIgQcnsnpnZmd2ZsAtLL+kCbZduQShoc2bmTDswO7PMnG274aVpAiEhoGBQTIwpRLlGQARi0Bei8QEVId5CYhQ0IUYDjYHEiFE8s71tKwJtedjEzSab85//9n3//589M6CnrPy5bfXbfq/wTCnu6wE9xR4PMxWUl5UuesJbXFVaBPIUPH0983tKer0/L3ZgykhLzchJW6aDfN0pw3SknDBCZWxTsqCjO5IJU8iRsCIlYw0rJdYPpLRtYUuxDMoXr4lQUOUBBAhxISAIWoghUnPIZ4sVoUSOFYJBAcoyEkVGkMm+42RQ3HQwNHGEYgETphlAs2ILw0u8KPEhPxBCrZRvDbId3TKJih9Q0Vy6Us7Wzsv1/qlCx0E2Jk6oaDxWl2yKxWtqG1sWB/J8RQd5SGKIM87oVbWlIt8aaGTQ/cM4OW0pmVEU5DhUIDoQYbRTKTaUzATSz1HNcBDySBOhHOYI1fCRUFln2SmI75+HK9FVWsupSsjEOs4+iFHChrwRKXhw1UhcxGt87s+qDDR0TUd2hKpdFlu3OlnbTPmSiYRtdeoqUnNIgywfEkIMI1LRjmwa2W5ohh8MM+BrkOQxcaotU9Vdyhxfo4WXIWKIxjITzGOGKDWZTXZMw24++XqhYQb5VrekAzXM4A7TrSpKERp8ueWD+R9qiJEWeFQtwctBXtDC5BsKyyy8V0u4sz7utoi6lYklEgE3FyTDLJ2C9iaE0wZUEK0QejMpZOuqxPEay4U1RKuCqNFBUdNomVcFmtEQIqeCLCti+P/THRjbupzBaLhDxm7kIEYol1FJh5qErU3IbCEYqLGauWNnsC26nQjVgXFaCgS6urr8XZzfstsDLABMYG3DyqTSgVKk8kO6+oOVaT3XIAoiVo4uYZJAhOom/UeCm+1UtLm2rrk2Wd/W0rSitnGod0dlFh0r/Q+kScVKo4Rl6Eq2sCBytpqANs4mkWEQwaRAOi7IQoDnzvoIRNeHQ5zAtO53O86vWKmABcmZ5Yracln7HkYp4BCS/AMnAPHstxFULdPITsR4HDa62UlGyLKzEwk4bDwOG6goVsbEEwk3aDoOCy1jaLphuKfERALmmY8nTRMaWawrznDISTV+LJ2Op1IZDGUDxdVCmIC8AQcsLwqThldgqDp1TJpat+i0O+vkTxHSieYamhM5Phxiw0EaCqoQEhRlUsAb2vUCw83wDCmowAlhAMKTwlaDOgutqJzMgTAIqTSHkEgHkcLTMCiyNA95DQFO5tkwPynM1YZOzonCu2fUWw5G6uSgketwYYFy53FoHBWBJ/dFhBQ6qGoCLQcVhuZY5qGrOSgoCd7jZvmvR4rA6Cf6aFHuw/R6zoBez7vFHg8IgGeYeWBumXd1iffxKkfHyE9uoX5HbzfJg6qN/JtQNg11u7jMs37OySNtee8Q+l4ATw6/RSj3MlPzXimAOSM7pUzl7AomzABWZHhe5EOtYN7Ibgkzq2TGfOfX6sPltcEl33/8Rv2B6YvpC+YuUDGs5PGUFpX0eopmb9h77Owfvc9v2Vbk7Kyc3fX3hvOfVuxfoL8aO3m856v9h6c93R36fNq03y7tmvLs8rZvV23Vp79+94PXbrWGlxyg++Z473BfR68e+qShvsrYe4d9+5sdh42ru2ferrx9+dJxfsF155eP8FpPU/M+VlzwGV6623uuvu6Lv95j3zzRtGd/38ET1/dFnrq24seLO0o8X66DG26fWfj+mrmXZwq31M17D1WdPX/qSnbPy6ny1vUHt9wU+r0v3ujeGPS9dWHrtf5972y3b/60Q6du3Phu8w/ZPz0n+s/NWuFbPmM73V8ZB5u9RxbtOs2ApRVX51/ZE7646KVbp88d2bmq49grp+iN1NzHoguPHr27+sOB8v0D5gwpOt0RAAA=","expires_in":7200,"refresh_token":"v^1.1#i^1#p^3#I^3#f^0#r^1#t^Ul4xMF8yOjg2MTVCMDE4OEZCODMyN0E1NjM1NTJGN0JEOUM5OTRBXzJfMSNFXjI2MA=='
-    # url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
-    # headers = {
-    #     'token': tok
-    # }
-    #
-    # r = requests.get(url, headers=headers)
-    #
-    # return r.text
+    tok = 'v^1.1#i^1#r^0#I^3#f^0#p^3#t^H4sIAAAAAAAAAOVYW2wUVRjudtuSirWBcNHKwzIgQcnsnpnZmd2ZsAtLL+kCbZduQShoc2bmTDswO7PMnG274aVpAiEhoGBQTIwpRLlGQARi0Bei8QEVId5CYhQ0IUYDjYHEiFE8s71tKwJtedjEzSab85//9n3//589M6CnrPy5bfXbfq/wTCnu6wE9xR4PMxWUl5UuesJbXFVaBPIUPH0983tKer0/L3ZgykhLzchJW6aDfN0pw3SknDBCZWxTsqCjO5IJU8iRsCIlYw0rJdYPpLRtYUuxDMoXr4lQUOUBBAhxISAIWoghUnPIZ4sVoUSOFYJBAcoyEkVGkMm+42RQ3HQwNHGEYgETphlAs2ILw0u8KPEhPxBCrZRvDbId3TKJih9Q0Vy6Us7Wzsv1/qlCx0E2Jk6oaDxWl2yKxWtqG1sWB/J8RQd5SGKIM87oVbWlIt8aaGTQ/cM4OW0pmVEU5DhUIDoQYbRTKTaUzATSz1HNcBDySBOhHOYI1fCRUFln2SmI75+HK9FVWsupSsjEOs4+iFHChrwRKXhw1UhcxGt87s+qDDR0TUd2hKpdFlu3OlnbTPmSiYRtdeoqUnNIgywfEkIMI1LRjmwa2W5ohh8MM+BrkOQxcaotU9Vdyhxfo4WXIWKIxjITzGOGKDWZTXZMw24++XqhYQb5VrekAzXM4A7TrSpKERp8ueWD+R9qiJEWeFQtwctBXtDC5BsKyyy8V0u4sz7utoi6lYklEgE3FyTDLJ2C9iaE0wZUEK0QejMpZOuqxPEay4U1RKuCqNFBUdNomVcFmtEQIqeCLCti+P/THRjbupzBaLhDxm7kIEYol1FJh5qErU3IbCEYqLGauWNnsC26nQjVgXFaCgS6urr8XZzfstsDLABMYG3DyqTSgVKk8kO6+oOVaT3XIAoiVo4uYZJAhOom/UeCm+1UtLm2rrk2Wd/W0rSitnGod0dlFh0r/Q+kScVKo4Rl6Eq2sCBytpqANs4mkWEQwaRAOi7IQoDnzvoIRNeHQ5zAtO53O86vWKmABcmZ5Yracln7HkYp4BCS/AMnAPHstxFULdPITsR4HDa62UlGyLKzEwk4bDwOG6goVsbEEwk3aDoOCy1jaLphuKfERALmmY8nTRMaWawrznDISTV+LJ2Op1IZDGUDxdVCmIC8AQcsLwqThldgqDp1TJpat+i0O+vkTxHSieYamhM5Phxiw0EaCqoQEhRlUsAb2vUCw83wDCmowAlhAMKTwlaDOgutqJzMgTAIqTSHkEgHkcLTMCiyNA95DQFO5tkwPynM1YZOzonCu2fUWw5G6uSgketwYYFy53FoHBWBJ/dFhBQ6qGoCLQcVhuZY5qGrOSgoCd7jZvmvR4rA6Cf6aFHuw/R6zoBez7vFHg8IgGeYeWBumXd1iffxKkfHyE9uoX5HbzfJg6qN/JtQNg11u7jMs37OySNtee8Q+l4ATw6/RSj3MlPzXimAOSM7pUzl7AomzABWZHhe5EOtYN7Ibgkzq2TGfOfX6sPltcEl33/8Rv2B6YvpC+YuUDGs5PGUFpX0eopmb9h77Owfvc9v2Vbk7Kyc3fX3hvOfVuxfoL8aO3m856v9h6c93R36fNq03y7tmvLs8rZvV23Vp79+94PXbrWGlxyg++Z473BfR68e+qShvsrYe4d9+5sdh42ru2ferrx9+dJxfsF155eP8FpPU/M+VlzwGV6623uuvu6Lv95j3zzRtGd/38ET1/dFnrq24seLO0o8X66DG26fWfj+mrmXZwq31M17D1WdPX/qSnbPy6ny1vUHt9wU+r0v3ujeGPS9dWHrtf5972y3b/60Q6du3Phu8w/ZPz0n+s/NWuFbPmM73V8ZB5u9RxbtOs2ApRVX51/ZE7646KVbp88d2bmq49grp+iN1NzHoguPHr27+sOB8v0D5gwpOt0RAAA='
+    url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
+    headers = {
+        'token': tok
+    }
 
-    return tok
-    
+    r = requests.get(url, headers=headers)
+
 
 
 ###################################################################################################################à
