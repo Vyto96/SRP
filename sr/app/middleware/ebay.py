@@ -75,7 +75,7 @@ def ebay_get_report():
     # mktp = request.args['marketplace'] #request.headers.get
     # start_date = request.args['start_date']
     # end_date = request.args['end_date']
-    if not tk:
+    if tk:
         mktp = 'EBAY_DE'
         start_date = '20181020'
         end_date = '20181029'
@@ -115,8 +115,8 @@ def ebay_get_report():
 
         return jsonify(report=report)
     else:
-        # return jsonify(error='token non ricevuto' , error_code=401)
-        return jsonify( tk )
+        return jsonify(error='token non ricevuto' , error_code=401)
+        # return jsonify( tk )
 
 
 
