@@ -33,8 +33,8 @@ def ebay_auth_code_response():
     return requests.post(url, data=payload, headers=headers).text
 
 
-@middle.route('/ebay/verify_token', methods=['POST'])
-def ebay_verify_token():
+# @middle.route('/ebay/verify_token', methods=['POST'])
+# def ebay_verify_token():
 
 
 
