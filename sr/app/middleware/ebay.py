@@ -46,7 +46,7 @@ def hello():
 
     r = requests.get(url, headers=headers)
 
-    return r.json()
+    return r.text
 
 
 
