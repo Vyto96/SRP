@@ -50,6 +50,7 @@ def ebay_get_report():
     # TODO:     #TOKEN DI AUTENTICAZIONE---> (validita' del token delegata ad'un altra API chiamata prima di questa)
     #PARAMS
     UAtoken = json.loads( request.headers.get('UAtoken') )
+
     if not UAtoken:
         return jsonify(error='User Access token non ricevuto', error_code=401)
 
@@ -62,8 +63,6 @@ def ebay_get_report():
   #   "refresh_token_expires_in": 47304000,
   #   "token_type": "User Access Token"
   # }
-
-
 
     mktp = request.headers.get('marketplace') #request.headers.get
     start_date = request.headers.get('start_date')
@@ -88,9 +87,7 @@ def ebay_get_report():
     if 'errors' in r.keys():
         return jsonify(error=r.get('errors')[0]['message'] , error_code=401)
 
-
     report = []
-
     for i in r['records']:
         date = i['dimensionValues'][0]['value']
         date = date[:4] + '/' + date[4:6] + '/' + date[6:8]
@@ -104,7 +101,7 @@ def ebay_get_report():
                         'scr': scr
                         })
 
-    return jsonify(report=report)
+    return jsonify(report=report, 200)
 
 
 
