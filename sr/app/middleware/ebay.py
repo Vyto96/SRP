@@ -108,7 +108,8 @@ def ebay_get_report():
                             })
 
         return jsonify(report=report)
-
+    else:
+        return jsonify(error='roken non ricevuto' , error_code=401)
 
 
 
