@@ -6,6 +6,22 @@ from . import api
 # from .errors import forbidden
 
 
+
+@api.route('login')
+def try_login():
+    username = request.headers.get('username')
+    psw = request.headers.get('psw')
+    user = User.query.filter_by(username=username).first()
+    if user:
+        if user.verify_password(psw):
+            return 200
+        else:
+            return 'error: wrong password', 401
+    else:
+        return 'error: username not existing', 404
+
+
+
 @api.route('/users/')
 def get_users():
     users = User.query.all()
@@ -13,7 +29,7 @@ def get_users():
         return jsonify( {'users': [u.to_json() for u in users] } )
     return '<h1>nessun utente nel db</h1>'
 
-@api.route('/users/<id>/', methods=['GET', 'POST'])
+@api.route('/users/<username>/', methods=['GET', 'POST'])
 def get_user(id):
     user = User.query.get_or_404(id)
     if request.method == 'GET': # richiesta utente

@@ -18,12 +18,17 @@ class User(db.Model, UserMixin):
     email = db.Column( db.String(64), unique=True, index=True )
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash =  db.Column( db.String(128) )
-    confirmed = db.Column(db.Boolean, default=False) # confermato?
+
+    # confirmed = db.Column(db.Boolean, default=False) # confermato?
 
     # relazione 1:N
     stores = db.relationship('Store', backref='users', lazy='dynamic')
 
     # METODI
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+
     def to_json(self):
         json_user = {
             'url': url_for('api.get_user', id=self.id),
@@ -197,8 +202,7 @@ login_manager.anonymous_user = AnonymousUser
     # def password(self, password):
     #     self.password_hash = generate_password_hash(password)
     #
-    # def verify_password(self, password):
-    #     return check_password_hash(self.password_hash, password)
+
     #
     #
     #
