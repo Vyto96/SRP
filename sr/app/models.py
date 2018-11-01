@@ -68,7 +68,7 @@ class Ecommerce(db.Model):
 
 
     @staticmethod
-    def insert_ecommerce():
+    def insert_all():
         configured_ecom = ['EBAY_DE', 'EBAY_GB']
 
         for e in configured_ecom:
