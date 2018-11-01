@@ -7,20 +7,35 @@ from . import api
 
 
 
-@api.route('login')
+@api.route('/login')
 def try_login():
-    username = request.headers.get('username')
+    logger = request.headers.get('logger')
     psw = request.headers.get('psw')
-    user = User.query.filter_by(username=username).first()
-    if user:
-        if user.verify_password(psw):
-            return 200
-        else:
-            return 'error: wrong password', 401
+    user = User.query.filter_by(username=logger).first()
+    if user is None:
+        user = User.query.filter_by(email=logger).first()
+        if user is None:
+            return 'error: username or email not existing', 404
+
+    if user.verify_password(psw):
+        return 200
     else:
-        return 'error: username not existing', 404
+        return 'error: wrong password', 401
 
 
+@api.route('/register', methods=['POST'])
+def register():
+    if  form.email.data and \
+        form.username.data and \
+        form.password.data:
+        user = User(email=form.email.data,
+                    username=form.username.data,
+                    password_hash=form.password.data
+                         )
+        db.session.add(user)
+        db.session.commit()
+        return 'Registration successful', 200
+    return 'error', 401
 
 @api.route('/users/')
 def get_users():

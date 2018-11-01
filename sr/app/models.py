@@ -29,6 +29,15 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, password)
 
 
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+
     def to_json(self):
         json_user = {
             'url': url_for('api.get_user', id=self.id),
@@ -193,15 +202,15 @@ login_manager.anonymous_user = AnonymousUser
     #
     #
     #
-    #
-    # @property
-    # def password(self):
-    #     raise AttributeError('password is not a readable attribute')
-    #
-    # @password.setter
-    # def password(self, password):
-    #     self.password_hash = generate_password_hash(password)
-    #
+
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
 
     #
     #
