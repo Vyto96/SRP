@@ -11,6 +11,7 @@ from . import api
 def try_login():
     logger = request.headers.get('logger')
     psw = request.headers.get('psw')
+
     if psw is None or logger is None:
         return 'data missed', 403
 
@@ -21,7 +22,7 @@ def try_login():
             return 'error: username or email not existing', 404
 
     if user.verify_password(psw):
-        return 200
+        return 'login successful', 200
     else:
         return 'error: wrong password', 401
 
