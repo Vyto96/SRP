@@ -25,12 +25,12 @@ def try_login():
 
 @api.route('/register', methods=['POST'])
 def register():
-    if  form.email.data and \
-        form.username.data and \
-        form.password.data:
-        user = User(email=form.email.data,
-                    username=form.username.data,
-                    password_hash=form.password.data
+    if  request.form.get('email') and \
+        request.form.get('username') and \
+        request.form.get('password'):
+        user = User(email=request.form.get('email'),
+                    username=request.form.get('username'),
+                    password_hash=request.form.get('password')
                          )
         db.session.add(user)
         db.session.commit()
