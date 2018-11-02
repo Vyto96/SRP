@@ -1,4 +1,4 @@
-from flask import Blueprint, request, abort, url_for, redirec, session
+from flask import Blueprint, request, abort, url_for, redirect, session
 import os
 api = Blueprint('api', __name__)
 
