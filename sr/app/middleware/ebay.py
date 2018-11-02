@@ -5,7 +5,7 @@ from urllib.parse import unquote, quote
 
 
 
-@middle.route('/ebay/get_token', methods=['POST'])
+@middle.route('/ebay/get_token', methods=['POST', 'GET'])
 def ebay_auth():
     url = os.environ.get('EBAY_RUNAME')
     session['myadd'] = "fuffa"
