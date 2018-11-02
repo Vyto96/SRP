@@ -4,7 +4,7 @@ api = Blueprint('api', __name__)
 
 @api.before_request
 def before_request():
-    api_key = os.environ.get('MY_API_KEY')
+    api_key = os.environ.get('SR_API_KEY')
     req_api_key = request.headers.get('api_key')
     if  req_api_key is None or req_api_key is not api_key:
         abort(401)
