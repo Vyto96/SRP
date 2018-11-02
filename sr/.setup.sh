@@ -2,6 +2,7 @@
 
 export SR_SECRET_KEY=''
 export SR_HOME=''
+export SR_API_KEY=''
 # export DB_URL=''
 #EMAIL
 export MAIL_USERNAME=''
