@@ -62,7 +62,7 @@ def add_store(id_user, id_ecom):
         }
         headers = {"return_url": "bla"}
 
-        return res = requests.post(
+        return requests.post(
             url = url,
             data = payload,
             headers = headers
