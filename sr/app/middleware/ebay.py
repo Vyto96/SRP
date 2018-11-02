@@ -8,7 +8,7 @@ from urllib.parse import unquote, quote
 @middle.route('/ebay/get_token', methods=['POST'])
 def ebay_auth():
     url = os.environ.get('EBAY_RUNAME')
-    session[]
+    #session[]
     session['return_url'] = request.form['return_url']
     return redirect(url)
 
