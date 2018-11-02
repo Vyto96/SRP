@@ -42,7 +42,8 @@ def create_app():
     with app.app_context():
         # if per controllare l'esistenza del db prima di crearlo
         db.create_all()
-
+        db.Ecommerce.insert_all()
+        db.Function.insert_all()
     login_manager.init_app(app)
 
 #     bootstrap.init_app(app)

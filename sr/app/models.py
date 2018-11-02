@@ -110,7 +110,7 @@ class Function(db.Model):
 
     # METODI
     @staticmethod
-    def insert_function():
+    def insert_all():
         configured_fun = [
             {
                 'name':'ebay_get_report',
