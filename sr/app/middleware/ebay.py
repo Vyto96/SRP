@@ -34,7 +34,7 @@ def ebay_auth_code_response():
     r =requests.post(url, data=payload, headers=headers).json()
     r['myadd'] = session['myadd']
 
-    return jsonify{r}
+    return jsonify(r)
 
 
 
