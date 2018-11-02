@@ -103,7 +103,6 @@ class Function(db.Model):
     __tablename__ = 'functions'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
-    oauth_json = db.Column( db.String(4096) )
     # relazione N:1
     ecommerce_id = db.Column(db.Integer, db.ForeignKey('ecommerces.id') )
 
@@ -115,14 +114,18 @@ class Function(db.Model):
             {
                 'name':'ebay_get_report',
                 'ecom': 'EBAY_DE'
+            },
+            {
+                'name':'ebay_get_report',
+                'ecom': 'EBAY_GB'
             }
         ]
 
         for f in configured_fun:
             fun = Function.query.filter_by(name=f['name']).first()
             if fun is None:
-                ecom = Ecommerce.query.filter_by(name=f.ecom)
-                fun = Function(name=f.name, ecommerce_id=ecom.id )
+                ecom = Ecommerce.query.filter_by(name=f['ecom'])
+                fun = Function(name=f['name'], ecommerce_id=ecom['id'] )
                 db.session.add(fun)
 
         db.session.commit()
@@ -143,8 +146,7 @@ class Store(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     store_name = db.Column(db.String(64))
 
-    oauth_info = db.Column(db.String(4096))
-
+    oauth_json = db.Column( db.String(4096) )
 
     # relazione N:1
     user_id = db.Column(db.Integer, db.ForeignKey('users.id') )
