@@ -22,7 +22,7 @@ def try_login():
             return 'error: username or email not existing', 404
 
     if user.verify_password(psw):
-        return 'login successful', 200
+        return 'login successfull', 200
     else:
         return 'error: wrong password', 401
 

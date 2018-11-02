@@ -2,7 +2,7 @@ from flask import Blueprint, request
 import os
 api = Blueprint('api', __name__)
 
-@api.before_app_request
+@api.before_request
 def before_request():
     api_key = os.environ.get('MY_API_KEY')
     if request.headers.get('api_key') is not api_key:
