@@ -125,7 +125,7 @@ class Function(db.Model):
             fun = Function.query.filter_by(name=f['name']).first()
             if fun is None:
                 ecom = Ecommerce.query.filter_by(name=f['ecom']).first()
-                fun = Function(name=f['name'], ecommerce_id=ecom['id'] )
+                fun = Function(name=f['name'], ecommerce_id=ecom.id )
                 db.session.add(fun)
 
         db.session.commit()
