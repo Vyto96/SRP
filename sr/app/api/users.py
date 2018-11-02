@@ -46,15 +46,27 @@ def register():
 
 
 
-@api.route('/user/<id>/add_stores', methods=['POST'])
-def add_store(id):
+@api.route('/user/<id_user>/ecommerce/<id_ecom>/add_stores', methods=['POST'])
+def add_store(id_user, id_ecom):
 
-    user = User.query.filter_by(id=id).first_or_404()
-    if  request.form.get('store_name'):
-        res = requests.get(
-            url= os.environ.get('SR_HOME') + '/middle/ebay/get_token',
+    user = User.query.filter_by(id=id_user).first_or_404()
+    ecommerce = Ecommerce.query.filter_by(id=id_ecom).first_or_404()
+    store_name = request.form.get('store_name')
+
+    if  store_name:
+        url = os.environ.get('SR_HOME') + '/middle/ebay/get_token'
+        payload = {
+            "store_name": store_name,
+            "id_user": id_user,
+            "id_ecom": id_ecom
+        }
+        headers = {"return_url": "bla"}
+
+        return res = requests.post(
+            url = url,
+            data = payload
             )
-        return res.text
+
     return 'volevi', 404
 
     #

@@ -1,14 +1,17 @@
-from flask import jsonify, redirect, request
+from flask import jsonify, redirect, request, session
 from . import middle
 import requests, os
 from urllib.parse import unquote, quote
 
 
 
-@middle.route('/ebay/get_token')
+@middle.route('/ebay/get_token', methods=['POST'])
 def ebay_auth():
     url = os.environ.get('EBAY_RUNAME')
+    session[]
+    session['return_url'] = request.form['return_url']
     return redirect(url)
+
 
 
 @middle.route('/ebay/get_token/response/', methods=['GET', 'POST'])

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, abort, url_for, redirect
+from flask import Blueprint, request, abort, url_for, redirec, session
 import os
 api = Blueprint('api', __name__)
 
@@ -14,12 +14,13 @@ def before_request():
 # prova redirect
 @api.route('/prova_redirect')
 def prova_redirect():
-    return 'se sei qui, sei stato redirectato'
+    return 'se sei qui, sei stato redirectato e session = {}'.format(session['hello'])
 
 # prova redirect
 @api.route('/')
 def index():
-    return redirect(url_for('api.prova_redirect', _external=True)) 
+    session['hello'] = 'hello'
+    return redirect(url_for('api.prova_redirect', _external=True))
 
 
 #import dei file .py che contengono le view fun che ritornano le risorse indicate dal nome del file stesso
