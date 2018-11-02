@@ -119,7 +119,7 @@ class Function(db.Model):
         ]
 
         for f in configured_fun:
-            fun = Function.query.filter_by(name=f).first()
+            fun = Function.query.filter_by(name=f['name']).first()
             if fun is None:
                 ecom = Ecommerce.query.filter_by(name=f.ecom)
                 fun = Function(name=f.name, ecommerce_id=ecom.id )
