@@ -13,7 +13,7 @@ def try_login():
     psw = request.headers.get('psw')
     if psw is None or logger is None:
         return 'data missed', 403
-    
+
     user = User.query.filter_by(username=logger).first()
     if user is None:
         user = User.query.filter_by(email=logger).first()
@@ -33,7 +33,7 @@ def register():
         request.form.get('password'):
         user = User(email=request.form.get('email'),
                     username=request.form.get('username'),
-                    password_hash=request.form.get('password')
+                    password=request.form.get('password')
                          )
         db.session.add(user)
         db.session.commit()
