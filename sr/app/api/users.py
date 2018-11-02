@@ -48,7 +48,7 @@ def get_users():
         return jsonify( {'users': [u.to_json() for u in users] } )
     return '<h1>nessun utente nel db</h1>'
 
-@api.route('/users/<username>/', methods=['GET', 'POST'])
+@api.route('/users/<id>/', methods=['GET', 'POST'])
 def get_user(id):
     user = User.query.get_or_404(id)
     if request.method == 'GET': # richiesta utente
