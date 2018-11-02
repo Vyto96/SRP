@@ -8,8 +8,8 @@ from urllib.parse import unquote, quote
 @middle.route('/ebay/get_token', methods=['POST'])
 def ebay_auth():
     url = os.environ.get('EBAY_RUNAME')
-    #session[]
-    session['return_url'] = request.form['return_url']
+    session['myadd'] = "fuffa"
+    # session['return_url'] = request.form['return_url']
     return redirect(url)
 
 
@@ -31,7 +31,10 @@ def ebay_auth_code_response():
                 'redirect_uri': os.environ.get('EBAY_URI')
     }
 
-    return requests.post(url, data=payload, headers=headers).text
+    r =requests.post(url, data=payload, headers=headers).json()
+    r['myadd'] = session['myadd']
+
+    return jsonify{r}
 
 
 
