@@ -28,10 +28,10 @@ class User(db.Model, UserMixin):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
-    @property
-    def password(self):
-        raise AttributeError('password is not a readable attribute')
+    #
+    # @property
+    # def password(self):
+    #     raise AttributeError('password is not a readable attribute')
 
     @password.setter
     def password(self, password):
