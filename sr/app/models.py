@@ -67,6 +67,18 @@ class Ecommerce(db.Model):
     # METODI
 
 
+    def to_json(self):
+        json_ecommerce = {
+            'url': url_for('api.get_ecommerces', id=self.id),
+            'ecommerce_name': self.name,
+            'functions_url': url_for('api.get_ecommerce_functions', id=self.id)
+
+        }
+        return json_ecommerce
+
+
+
+
     @staticmethod
     def insert_all():
         configured_ecom = ['EBAY_DE', 'EBAY_GB']
@@ -114,7 +126,7 @@ class Function(db.Model):
                 db.session.add(fun)
 
         db.session.commit()
-        print('funztion correctly entered!')
+        print('functions correctly entered!')
 
 
     def __repr__(self):
