@@ -31,7 +31,7 @@ def ebay_auth_code_response():
     return requests.post(url, data=payload, headers=headers).text
 
 
-custom chrome tab
+
 ###################################################################################################################
 # {
 #   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
