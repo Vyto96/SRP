@@ -11,6 +11,9 @@ from . import api
 def try_login():
     logger = request.headers.get('logger')
     psw = request.headers.get('psw')
+    if psw is None or logger is None:
+        return 'data missed', 403
+    
     user = User.query.filter_by(username=logger).first()
     if user is None:
         user = User.query.filter_by(email=logger).first()
