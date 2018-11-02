@@ -64,7 +64,8 @@ def add_store(id_user, id_ecom):
 
         return res = requests.post(
             url = url,
-            data = payload
+            data = payload,
+            headers = headers
             ).text
 
     return 'volevi', 404
