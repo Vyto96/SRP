@@ -44,7 +44,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'email': self.email,
             'username': self.username,
-            'stores_url': url_for('api.get_user_stores', id=self.id)
+            'stores_url': url_for('api.get_user_stores', id=self.id )
         }
         return json_user
 

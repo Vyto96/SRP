@@ -2,6 +2,7 @@ from flask import jsonify, request, g, url_for, current_app
 from .. import db
 from ..models import Store, User
 from . import api
+import requests, os
 # from .decorators import permission_required
 # from .errors import forbidden
 
@@ -24,7 +25,8 @@ def try_login():
     if user.verify_password(psw):
         return jsonify( user.to_json() ), 200
     else:
-        return 'error: wrong password', 401
+        return jsonify( {} ), 401
+
 
 
 @api.route('/register', methods=['POST'])
@@ -41,6 +43,56 @@ def register():
         return 'Registration successful', 200
     return 'error', 401
 
+
+
+
+@api.route('/user/<id>/add_stores', methods=['POST'])
+def add_store(id):
+
+    user = User.query.filter_by(id=id).first_or_404()
+    if  request.form.get('store_name'):
+        res = requests.get(
+            url= os.environ.get('SR_HOME') + '/middle/ebay/get_token',
+            )
+        return res.text
+    return 'volevi', 404
+
+    #
+    #
+    #
+    #     user = User(email=request.form.get('email'),
+    #                 username=request.form.get('username'),
+    #                 password=request.form.get('password')
+    #                      )
+    #     db.session.add(user)
+    #     db.session.commit()
+    #     return 'Registration successful', 200
+    # return 'error', 401
+
+
+
+
+
+
+
+
+
+@api.route('/users/<id>/stores/')
+def get_user_stores(id):
+    stores = Store.query.filter_by(user_id=id).all()
+    if stores:
+        # return '<h1> user ha degli store configurati </h1><br>'
+        return jsonify( {'user_stores': [s.to_json() for s in stores] } ), 200
+    else:
+        return jsonify({}), 404
+
+
+
+
+
+
+
+
 @api.route('/users/')
 def get_users():
     users = User.query.all()
@@ -48,22 +100,17 @@ def get_users():
         return jsonify( {'users': [u.to_json() for u in users] } )
     return '<h1>nessun utente nel db</h1>'
 
-@api.route('/users/<id>/', methods=['GET', 'POST'])
-def get_user(id):
-    user = User.query.get_or_404(id)
-    if request.method == 'GET': # richiesta utente
-        return jsonify( user.to_json() )
-    else: # aggiungi utente
-        return "<h1>aggiunta utente</h1>"
+#
+# @api.route('/users/<id>/', methods=['GET', 'POST'])
+# def get_user(id):
+#     user = User.query.get_or_404(id)
+#     if request.method == 'GET': # richiesta utente
+#         return jsonify( user.to_json() )
+#     else: # aggiungi utente
+#         return "<h1>aggiunta utente</h1>"
+#
 
-@api.route('/users/<id>/stores/')
-def get_user_stores(id):
-    stores = Store.query.filter_by(user_id=id).all()
-    if stores:
-        # return '<h1> user ha degli store configurati </h1><br>'
-        return jsonify( {'user_stores': [s.to_json() for s in stores] } )
-    else:
-        return '<h1> user senza store configurati </h1><br>'
+
             # if user.stores:
     #     return '<h1> user esiste, tipo--></h1><br> ' +  str(type(str(user)))
     # else:

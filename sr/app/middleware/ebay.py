@@ -30,6 +30,8 @@ def ebay_auth_code_response():
 
     return requests.post(url, data=payload, headers=headers).text
 
+
+custom chrome tab
 ###################################################################################################################
 # {
 #   "access_token": "v^1.1#i^1#p^3#r^1...XzMjRV4xMjg0",
@@ -138,7 +140,7 @@ def ebay_get_report():
 
         r = response.json()
 
-        if 'errors' in r.keys():
+        if 'errors' in r.keys(): # error che indica l'aggiornamento del token
             return jsonify(error='ERRORE: ' + r.get('errors')[0]['message'] , error_code=401)
 
         start_report = r['startDate'][:10]
