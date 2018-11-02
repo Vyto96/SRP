@@ -20,7 +20,7 @@ def prova_redirect():
 @api.route('/')
 def index():
     session['hello'] = 'hello'
-    return redirect(url_for('middle.ebay_auth', fuffa= ,_external=True))
+    return redirect(url_for('middle.ebay_auth',_external=True))
 
 
 #import dei file .py che contengono le view fun che ritornano le risorse indicate dal nome del file stesso
