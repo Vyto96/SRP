@@ -20,7 +20,7 @@ def get_store(id):
 
 #######da cancellare:
 @api.route('/add_store',  methods=['POST'])
-def add_store():
+def add_store_simply():
     s = Store(
     store_name = request.args['store_name'],
     oauth_json = request.args['oauth_json'],
