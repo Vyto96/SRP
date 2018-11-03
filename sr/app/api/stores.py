@@ -17,3 +17,19 @@ def get_stores():
 def get_store(id):
     store = Store.query.get_or_404(id)
     return jsonify( store.to_json() )
+
+#######da cancellare:
+@api.route('/add_store',  methods=['POST'])
+def add_store():
+    s = Store(
+    store_name = request.args['store_name'],
+    oauth_json = request.args['oauth_json'],
+    user_id = 1,
+    ecommerce_id = 1
+    )
+    db.session.add(s)
+    db.session.commit()
+
+    return jsonify(
+        Store.query.filter_by(id=s.id).first().to_json()
+    )
