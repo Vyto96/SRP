@@ -22,8 +22,8 @@ def get_store(id):
 @api.route('/add_store',  methods=['POST'])
 def add_store_simply():
     s = Store(
-    store_name = request.args['store_name'],
-    oauth_json = request.args['oauth_json'],
+    store_name = request.form.get('store_name'),
+    oauth_json = request.form.get('oauth_json'),
     user_id = 1,
     ecommerce_id = 1
     )
