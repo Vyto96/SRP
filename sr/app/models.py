@@ -159,9 +159,9 @@ class Store(db.Model):
             'id': self.id,
             'store_name': self.store_name,
             'reference_ecommerce_url': url_for('api.get_ecommerces', id=self.ecommerce_id),
-            'reference_ecommerce_name': Ecommerce.query.filter_by(id=self.ecommerce_id).first(),
+            'reference_ecommerce_name': Ecommerce.query.filter_by(id=self.ecommerce_id).first().name,
             'store_user_owner_url': url_for('api.get_users', id=self.user_id),
-            'store_user_owner_name': User.query.filter_by(id=self.user_id).first(),
+            'store_user_owner_name': User.query.filter_by(id=self.user_id).first().username,
         }
         return json_store
 

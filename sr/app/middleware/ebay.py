@@ -28,7 +28,7 @@ def ebay_auth_code_response():
                 'redirect_uri': os.environ.get('EBAY_URI')
     }
 
-    r =requests.post(url, data=payload, headers=headers).json()
+    r =requests.post(url, data=payload, headers=headers).text
     return jsonify( r )
 
     # session['new_store']['oauth_json'] = r
