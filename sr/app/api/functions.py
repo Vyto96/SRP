@@ -25,7 +25,7 @@ def get_report_store(id_store):
                 )
 
     ref_tok = resp.json()['access_token']
-    mktp = Ecommerce.query.filter_by(id=self.ecommerce_id).first().name
+    mktp = Ecommerce.query.filter_by(id=store.ecommerce_id).first().name
     start_date = request.args['start_date']
     end_date =request.args['end_date']
 
