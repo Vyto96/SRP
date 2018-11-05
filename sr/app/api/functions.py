@@ -1,4 +1,4 @@
-from flask import jsonify, request, g, url_for, current_app
+from flask import jsonify, request, g, url_for, current_app, abort
 from .. import db
 from ..models import Store, User, Ecommerce
 from . import api
@@ -7,9 +7,9 @@ import requests, os
 
 
 @api.route('/get_report/<id_store>')
-def get_report_store(id):
+def get_report_store(id_store):
 
-    store = Store.query.filter_by(id=id).first()
+    store = Store.query.filter_by(id=id_store).first()
 
     if store is None:
         abort(404)
