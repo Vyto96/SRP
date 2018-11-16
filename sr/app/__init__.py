@@ -7,7 +7,7 @@ from flask_login import LoginManager
 #
 # #CONTROLLA
 # from flask_pagedown import PageDown
-# from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 # from flask_moment import Moment
 #
 #
@@ -18,7 +18,7 @@ login_manager = LoginManager()
 #
 #
 # #CONTROLLA
-# bootstrap = Bootstrap()
+bootstrap = Bootstrap()
 # pagedown = PageDown()
 # moment = Moment()
 #
@@ -45,7 +45,7 @@ def create_app():
 
     login_manager.init_app(app)
 
-#     bootstrap.init_app(app)
+    bootstrap.init_app(app)
 #     pagedown.init_app(app)
 #     moment.init_app(app)
 
