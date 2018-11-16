@@ -37,7 +37,7 @@ def login():
 
 @web_app.route('/register', methods=['GET', 'POST'])
 def register():
-return '<h1>REGISTER PAGE </h1>'    
+    return '<h1>REGISTER PAGE </h1>'    
 
 # @web_app.route('/prova_web')
 # def prova_web():
