@@ -12,7 +12,7 @@ new Vue({
   // router,
   data: {
     name: "Vyto"
-  }
+  },
 
   components: { App },
   template: '<App/>',
