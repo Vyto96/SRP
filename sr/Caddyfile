@@ -3,3 +3,9 @@ salesreporter.ddns.net {
         transparent
     }
 }
+
+salesreporter.ddns.net/spa {
+    proxy / localhost:8080 {
+        transparent
+    }
+}
