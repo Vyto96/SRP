@@ -34,6 +34,11 @@ def login():
         flash('invalid username or password, sorry!')
     return render_template('login.html', form=my_form)
 
+
+@web_app.route('/register', methods=['GET', 'POST'])
+def register():
+return '<h1>REGISTER PAGE </h1>'    
+
 # @web_app.route('/prova_web')
 # def prova_web():
 #     r = requests.get(url_for('api.get_users', _external=True) )
