@@ -37,7 +37,38 @@ def login():
 
 @web_app.route('/register', methods=['GET', 'POST'])
 def register():
-    return '<h1>REGISTER PAGE </h1>'    
+    my_form = RegistrationForm()
+    if my_form.validate_on_submit():
+
+        url = url_for('api.register',  _external=True)
+        headers = {
+            'api_key': os.environ.get('SR_API_KEY'),
+        }
+
+        payload = {
+            'email': my_form.email.data,
+            'username': my_form.username.data,
+            'password': my_form.password.data
+        }
+
+        r = requests.post(url, data=payload, headers=headers)
+
+
+        if r.status_code == 200:
+            flash(r.text)
+            return render_template('login.html')
+        flash(r.text)
+    return render_template('register.html', form=my_form)
+
+
+
+
+
+
+
+
+
+
 
 # @web_app.route('/prova_web')
 # def prova_web():

@@ -31,9 +31,21 @@ def try_login():
 
 @api.route('/register', methods=['POST'])
 def register():
-    if  request.form.get('email') and \
-        request.form.get('username') and \
-        request.form.get('password'):
+    email = request.form.get('email')
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    email_used = User.query.filter_by(email=email).first()
+    if email_used:
+        return 'error, email already used', 402
+
+    username_used = User.query.filter_by(username=username).first()
+    if username_used:
+        return 'error, username already used', 403
+    
+
+    if  email and username and password:
+
         user = User(email=request.form.get('email'),
                     username=request.form.get('username'),
                     password=request.form.get('password')
@@ -41,7 +53,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         return 'Registration successful', 200
-    return 'error', 401
+    return 'error, data missed', 401
 
 
 @api.route('/store_added_successfull')
