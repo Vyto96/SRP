@@ -56,7 +56,7 @@ def register():
 
         if r.status_code == 200:
             flash(r.text)
-            return render_template('login.html')
+            return redirect(url_for('web_app.login'))
         flash(r.text)
     return render_template('register.html', form=my_form)
 
