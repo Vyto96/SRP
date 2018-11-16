@@ -3,22 +3,23 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from flask_login import LoginManager
+from flask_cors import CORS
+from flask_bootstrap import Bootstrap
 #
 #
 # #CONTROLLA
 # from flask_pagedown import PageDown
-from flask_bootstrap import Bootstrap
 # from flask_moment import Moment
 #
 #
 # mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
-#
+bootstrap = Bootstrap()
+cors = CORS()
 #
 #
 # #CONTROLLA
-bootstrap = Bootstrap()
 # pagedown = PageDown()
 # moment = Moment()
 #
@@ -39,13 +40,14 @@ def create_app():
 #     mail.init_app(app)
     db.init_app(app)
 
+
     with app.app_context():
         # if per controllare l'esistenza del db prima di crearlo
         db.create_all()
 
     login_manager.init_app(app)
-
     bootstrap.init_app(app)
+    cors.init_app(app)
 #     pagedown.init_app(app)
 #     moment.init_app(app)
 
