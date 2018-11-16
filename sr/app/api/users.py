@@ -44,18 +44,43 @@ def register():
     return 'error', 401
 
 
+@api.route('/store_added_successfull')
+def store_added():
+    return '<h1>thanks to accept 3rd party condition!</h1> '
 
+@api.route('/user/<id_user>/ecommerce/<id_ecom>/add_stores', methods=['POST'])
+def add_store(id_user, id_ecom):
 
-@api.route('/user/<id>/add_stores', methods=['POST'])
-def add_store(id):
+    store_name = request.form.get('store_name')
+    if  store_name is None:
+        abort(402)
 
-    user = User.query.filter_by(id=id).first_or_404()
-    if  request.form.get('store_name'):
-        res = requests.get(
-            url= os.environ.get('SR_HOME') + '/middle/ebay/get_token',
-            )
-        return res.text
-    return 'volevi', 404
+    if session['new_store']['store_name'] == store_name and \
+        session['new_store']['oauth_json']: # significa che add stores gia' e' stata chiamata
+        #aggiungi store + token info
+        s = Store(  store_name=store_name,
+                    oauth_json=session['new_store']['oauth_json'],
+                    user_id=session['new_store']['id_user'],
+                    ecommerce_id=session['new_store']['id_ecom']
+                     )
+        db.session.add(s)
+        db.session.commit()
+
+        return url_for('api.store_added')
+
+    else: #altrimenti pirma volta che vengo chiamato, necessito di token
+        user = User.query.filter_by(id=id_user).first_or_404()
+        ecommerce = Ecommerce.query.filter_by(id=id_ecom).first_or_404()
+
+        session['new_store'] = {
+            'store_name': store_name,
+            "redirect_url": url_for('api.add_store', id_ecom, id_ecom, _external=True),
+            "id_user": id_user,
+            "id_ecom": id_ecom
+        }
+
+        redirect(url_for('middle.ebay_auth', _external=True) )
+
 
     #
     #

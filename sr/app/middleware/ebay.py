@@ -1,14 +1,15 @@
-from flask import jsonify, redirect, request
+from flask import jsonify, redirect, request, session
 from . import middle
 import requests, os
 from urllib.parse import unquote, quote
 
 
 
-@middle.route('/ebay/get_token')
+@middle.route('/ebay/get_token', methods=['POST', 'GET'])
 def ebay_auth():
     url = os.environ.get('EBAY_RUNAME')
     return redirect(url)
+
 
 
 @middle.route('/ebay/get_token/response/', methods=['GET', 'POST'])
@@ -20,7 +21,6 @@ def ebay_auth_code_response():
         'Content-Type': "application/x-www-form-urlencoded",
         'Authorization': os.environ.get('EBAY_B64_CREDENTIAL')
     }
-
     #BODY
     payload = {
                 'grant_type': 'authorization_code',
@@ -28,8 +28,11 @@ def ebay_auth_code_response():
                 'redirect_uri': os.environ.get('EBAY_URI')
     }
 
-    return requests.post(url, data=payload, headers=headers).text
+    r =requests.post(url, data=payload, headers=headers).json()
+    return jsonify( r )
 
+    # session['new_store']['oauth_json'] = r
+    # redirect( session['new_store']['redirect_url'] )
 
 
 ###################################################################################################################
