@@ -11,7 +11,7 @@ new Vue({
   el: '#app',
   // router,
   data: {
-    name: "Vyto"
+    name: 'Vyto'
   },
 
   components: { App },
