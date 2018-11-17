@@ -11,7 +11,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld
+  
   },
   data: () => ({
       user: this.$route.paarams.id//prendere i dati dall'url più chiamata
