@@ -14,7 +14,7 @@ export default {
 
   },
   data: () => ({
-      user: this.$route.paarams.id//prendere i dati dall'url più chiamata
+      user: this.$route.params.id,//prendere i dati dall'url più chiamata
   }),
 
 }
