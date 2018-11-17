@@ -1,13 +1,19 @@
 <template>
-  <div id="app">
+  <div id="app" class="container-fluid">
 <!-- NAVBAR -->
-    <sr-header></sr-header>
+    <sr-header v-bind:user="user"></sr-header>
 <!--ROUTER VIEW -->
     <router-view/>
   </div>
 </template>
 
 <script>
+
+export default {
+  data: () => ({
+    
+  }),
+}
 
 </script>
 
