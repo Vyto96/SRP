@@ -1,10 +1,10 @@
-salesreporter.ddns.net {
+salesreporter.ns1.mooo.com {
     proxy / localhost:4000 {
         transparent
     }
 }
 
-salesreporter.ddns.net/spa {
+salesreporter.ns1.mooo.com/spa {
     proxy / localhost:8080/spa {
         transparent
     }
