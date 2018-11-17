@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 // MY COMPONENTS
 import Header from './components/Header.vue'
+import ShowStores from './components/ShowStores.vue'
 
 
 Vue.use(BootstrapVue)
