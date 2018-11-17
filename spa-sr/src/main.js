@@ -7,13 +7,13 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 // MY COMPONENTS
-import SRHeader from './components/Header.vue'
+import Header from './components/Header.vue'
 
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
-Vue.component('sr-header', SRHeader);
+Vue.component('sr-header', Header);
 
 new Vue({
   router,
