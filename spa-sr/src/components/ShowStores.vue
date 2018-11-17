@@ -16,9 +16,9 @@ export default {
             stores: []
         }
     },
-    
+
     props: ['username'],
-    }
+    
 }
 
 </script>
