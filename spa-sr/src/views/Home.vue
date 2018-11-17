@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  
+    <h1>This is an home page of {{ user }}</h1>
   </div>
 </template>
 
@@ -13,5 +13,9 @@ export default {
   components: {
     HelloWorld
   }
+  data: () => ({
+      user: this.$route.paarams.id//prendere i dati dall'url più chiamata
+  }),
+
 }
 </script>

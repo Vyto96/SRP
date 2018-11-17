@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container-fluid">
 <!-- NAVBAR -->
-    <sr-header v-bind:user="user"></sr-header>
+    <sr-header></sr-header>
 <!--ROUTER VIEW -->
     <router-view/>
   </div>
@@ -11,7 +11,7 @@
 
 export default {
   data: () => ({
-      user: 'vyto' //prendere i dati dall'url più chiamata
+       //prendere i dati dall'url più chiamata
   }),
 }
 
