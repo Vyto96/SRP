@@ -21,7 +21,7 @@
 
         <b-navbar-nav class="ml-auto">
 
-          <b-nav-item>Hy {{user}}</b-nav-item>
+          <b-nav-item>Hy {{ user }}</b-nav-item>
 
           <b-nav-item>
             <a href="https://salesreporter.ns1.mooo.com/web_app">Logout</a>
@@ -40,7 +40,7 @@
 <script>
 export default {
   data: () => ({
-    user: 'vyto' //prendere i dati dall'url più chiamata 
+  
   }),
   props: ['user']
 }

@@ -11,7 +11,7 @@
 
 export default {
   data: () => ({
-    
+      user: 'vyto' //prendere i dati dall'url più chiamata
   }),
 }
 
