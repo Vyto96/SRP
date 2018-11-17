@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>This is an home page of {{ user }}</h1>
+    <h1>This is an home page of {{ $route.params.id }}</h1>
   </div>
 </template>
 
@@ -13,9 +13,11 @@ export default {
   components: {
 
   },
-  data: () => ({
-      user: this.$route.params.id,//prendere i dati dall'url più chiamata
-  }),
+  data () {
+      return {
+        user: this.$route.params.id,//prendere i dati dall'url più chiamata
+      }
+  },
 
 }
 </script>
