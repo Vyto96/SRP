@@ -2,8 +2,7 @@
   <div id="app">
 
 <!-- NAVBAR -->
-
-      <b-navbar toggleable type="inverse" variant="success">
+      <b-navbar toggleable="md" type="dark" variant="dark">
 
         <b-nav-toggle target="nav_collapse"></b-nav-toggle>
 
