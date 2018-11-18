@@ -3,7 +3,8 @@
     <h1>{{ user }}'s configured stores:</h1>
     <show-stores v-show="!report"
                 v-bind:stores="stores"
-                v-on:selectID="getReport($event)">
+                v-on:selectID="getReport($event)"
+                v-on:selectStores="getReport($event)">
      </show-stores>
 
      <div v-show="report">
