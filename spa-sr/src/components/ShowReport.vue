@@ -9,7 +9,7 @@
                         label-for="startDate"
                         >
             <b-form-input v-model="start_date"
-                         type="month"
+                         type="date"
                          placeholder="Enter date"
                          required
                          >
