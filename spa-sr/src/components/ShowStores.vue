@@ -1,11 +1,15 @@
 <template>
   <div id="show-stores">
-    <div v-for="store in stores" class="single-store">
-      <h2>{{ store.store_name }}</h2>
-      <b-button  variant="primary" href="">
-          GET REPORT
-      </b-button>
-    </div>
+    <ul>
+      <li v-for="store in stores" class="single-store">
+        <h2>{{ store.store_name }}</h2>
+        <h3>{{ store.reference_ecommerce_name }}</h3>
+        <h3>{{ store.id }}</h3>
+        <b-button  variant="primary" href="">
+            GET REPORT
+        </b-button>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -13,12 +17,12 @@
 export default {
     data () {
         return {
-            stores: []
+
         }
     },
 
-    props: ['username'],
-    
+    props: ['stores'],
+
 }
 
 </script>
