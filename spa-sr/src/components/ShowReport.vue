@@ -60,7 +60,7 @@ export default {
     onSubmit (evt) {
       evt.preventDefault();
 
-      alert('start: ' + this.start_date + '-- end: ' +  this.end_date );
+      console.log('start: ' + this.start_date + '-- end: ' +  this.end_date );
       this.parseDate();
       alert('start date:' + this.start_date);
       alert('end date: ' + this.end_date);
