@@ -29,9 +29,8 @@ def login():
         r = requests.get(url, headers=headers)
 
         if r.status_code == 200:
-            # spa_link = os.environ.get('SR_SPA')
-            spa_link = '/fuffa'
-            # + my_form.email.data  + '/'# + r.json()['id']
+            spa_link = os.environ.get('SR_SPA')
+            spa_link = spa_link + my_form.email.data  + '/'# + r.json()['id']
             # spa_link += '/' + my_form.email.data  + '/'
             return redirect(spa_link)
 
