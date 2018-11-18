@@ -33,7 +33,10 @@
         </b-form>
       </div>
       <div v-show="show_report">
-          <show-records v-bind:records="records"> </show-records> 
+          <show-records v-bind:records="records"> </show-records>
+          <b-button  variant="primary" v-on:click="show_report=false">
+              get another report
+          </b-button>
       </div>
 
 
