@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ user }}'s configured stores:</h1>
-    <show-stores v-bind:stores="stores"
+    <show-stores v-bind:stores="stores"></show-stores>
   </div>
 </template>
 
