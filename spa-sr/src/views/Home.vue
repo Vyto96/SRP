@@ -49,7 +49,7 @@ export default {
   created() {
     //do something after creating vue instance
     var url = 'https://salesreporter.ns1.mooo.com/api/users/' + this.id + '/stores/';
-    console.log(url);
+    // console.log(url);
 
     this.$http.get(url).then(function(data){
         this.stores = data.body.user_stores;

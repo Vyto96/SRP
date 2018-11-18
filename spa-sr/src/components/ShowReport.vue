@@ -60,11 +60,23 @@ export default {
     onSubmit (evt) {
       evt.preventDefault();
 
-      console.log('start: ' + this.start_date + '-- end: ' +  this.end_date );
       this.parseDate();
-      alert('start date:' + this.start_date);
-      alert('end date: ' + this.end_date);
 
+      var url = 'https://salesreporter.ns1.mooo.com/api/get_report/' + this.id + '/stores';
+
+      this.$http.get(url, 
+        {params: {start_date: this.start_date,
+                  end_date: this.end_date}, } //headers: {'X-Custom': '...'}},
+        ).then(function(data){
+
+          // this.stores = data.body.;
+          // console.log(data.body.user_stores);
+          console.log(data);
+          // console.log(this.stores);
+
+      // alert('start date:' + this.start_date);
+      // alert('end date: ' + this.end_date);
+        });
     },
     onReset (evt) {
       evt.preventDefault();
