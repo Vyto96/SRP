@@ -29,7 +29,7 @@ export default {
 
     this.$http.get(url).then(function(data){
         // this.stores = data.user_stores;
-        console.log(data.user_stores);
+        console.log(data.body.user_stores);
         console.log(data);
         // console.log(this.stores);
       });
