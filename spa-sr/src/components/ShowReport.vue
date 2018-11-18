@@ -46,11 +46,23 @@ export default {
   }),
 
   methods: {
+    parseDate(){
+      var d = this.start_date.slice(3, 5);
+      var m = this.start_date.slice(0, 2);
+      var y = this.start_date.slice(6, 10);
+      this.start_date = y + m + d;
+
+      d = this.end_date.slice(3, 5);
+      m = this.end_date.slice(0, 2);
+      y = this.end_date.slice(6, 10);
+      this.end_date = y + m + d;
+    },
     onSubmit (evt) {
       evt.preventDefault();
-      // alert('start date: ' + this.start_date.year + '_' + this.start_date.month + '_'+ this.start_date.day );
-      console.log(typeof this.start_date + this.start_date );
-      // alert('end date: ' + this.end_date);
+      this.parseDate();
+      alert('start date:' + this.start_date);
+      // console.log(this.start_date + this.start_date );
+      alert('end date: ' + this.end_date);
 
     },
     onReset (evt) {
