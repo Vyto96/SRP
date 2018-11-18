@@ -48,8 +48,10 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault();
-      alert('start date: ' + this.start_date);
-      alert('end date: ' + this.end_date);
+      alert('start date: ' + this.start_date.year + '_' + this.start_date.month + '_'+ this.start_date.day );
+      console.log(this.end_date);
+      // alert('end date: ' + this.end_date);
+
     },
     onReset (evt) {
       evt.preventDefault();
