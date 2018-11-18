@@ -3,7 +3,8 @@
       <h1>Show report for store with id = {{ id }}</h1>
 
       <div>
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+        <!-- @submit="onSubmit" @reset="onReset" -->
+        <b-form >
           <b-form-group id="startDateGroup"
                         label="Report start date:"
                         label-for="startDate"
