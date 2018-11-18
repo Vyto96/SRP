@@ -7,7 +7,7 @@
      </show-stores>
 
      <div v-show="report">
-       <show-report v-bind:id="report_id">
+       <show-report v-bind:id="report_id"  v-bind:store="report_store">
        </show-report>
        <b-button  variant="primary" v-on:click="report=false">
            show user store
@@ -34,12 +34,14 @@ export default {
         id: this.$route.params.id,
         stores : [],
         report: false,
-        report_id: ''
+        report_id: '',
+        report_store: ''
       }
   },
   methods: {
-    getReport: function(id_selected) {
+    getReport: function(id_selected, store_selected) {
       this.report_id = id_selected;
+      this.report_store = store_selected;
       this.report = true;
 
 

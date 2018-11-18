@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>Show report for store with id = {{ id }}</h1>
+      <h1>Show report for store {{ store }} with id = {{ id }}</h1>
       <div v-show="!show_report">
         <b-form @submit="onSubmit" @reset="onReset">
           <!-- START DATE -->
@@ -47,7 +47,7 @@ import ShowRecords from '@/components/ShowRecords.vue'
 
 
 export default {
-  props: ['id'],
+  props: ['id', 'store'],
   components: {
     'show-records': ShowRecords,
   },
