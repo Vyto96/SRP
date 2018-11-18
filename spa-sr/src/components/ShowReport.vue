@@ -49,7 +49,7 @@ export default {
     onSubmit (evt) {
       evt.preventDefault();
       // alert('start date: ' + this.start_date.year + '_' + this.start_date.month + '_'+ this.start_date.day );
-      console.log(typeof this.end_date);
+      console.log(typeof this.start_date + this.start_date );
       // alert('end date: ' + this.end_date);
 
     },
