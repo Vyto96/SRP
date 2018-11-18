@@ -1,4 +1,4 @@
-# change-my-name
+# SALES REPORTER SPA
 
 ## Project setup
 ```
