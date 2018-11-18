@@ -25,10 +25,30 @@ export default {
   created() {
     //do something after creating vue instance
     var url = 'https://salesreporter.ns1.mooo.com/api/users/' + this.id + '/stores/';
-    this.$http.get(url).then(function(data){
+
+    // this.$http.get(url).then(function(data){
+    //     this.stores = data.user_stores;
+    //     console.log(this.stores);
+    //   });
+
+    const axios = require('axios');
+
+    console.log(url);
+// Make a request for a user with a given ID
+    axios.get(url)
+      .then(function (data) {
+        // handle success
         this.stores = data.user_stores;
-        console.log(this.stores);
-      });
+        //     console.log(this.stores);
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });  
   }
 
 }
