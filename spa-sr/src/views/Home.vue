@@ -28,9 +28,10 @@ export default {
     console.log(url);
 
     this.$http.get(url).then(function(data){
-        this.stores = data.user_stores;
+        // this.stores = data.user_stores;
+        console.log(data.user_stores);
         console.log(data);
-        console.log(this.stores);
+        // console.log(this.stores);
       });
 
     // const axios = require('axios');
