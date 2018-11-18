@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ user }}'s configured stores:</h1>
-    <p>{{ stores }}</p>
+    {{ stores }}
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     this.$http.get(url).then(function(data){
         this.stores = data.user_stores;
         console.log(data);
+        console.log(this.stores);
       });
 
     // const axios = require('axios');
