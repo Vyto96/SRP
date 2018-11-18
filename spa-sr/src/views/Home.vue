@@ -8,7 +8,7 @@
 
      <show-report v-show="report"
                   v-bind:id="report_id">
-       
+
      </show-report>
   </div>
 </template>
@@ -22,7 +22,7 @@ import ShowReport from '@/components/ShowReport.vue'
 export default {
   name: 'home',
   components: {
-    'show-stores': ShowrStores,
+    'show-stores': ShowStores,
     'show-report': ShowReport,
   },
   data() {
