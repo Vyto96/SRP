@@ -18,7 +18,7 @@
            <b-button type="reset" variant="danger">Reset</b-button>
           </b-form-group>
         </b-form>
-
+      </div>
 
 
 
