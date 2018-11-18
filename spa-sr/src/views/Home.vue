@@ -1,29 +1,44 @@
 <template>
   <div class="home">
     <h1>{{ user }}'s configured stores:</h1>
-    <show-stores v-bind:stores="stores"></show-stores>
+    <show-stores v-show="!report"
+                v-bind:stores="stores"
+                v-on:selectID="getReport($event)">
+     </show-stores>
+
+     <show-report v-show="report"
+                  v-bind:id="report_id">
+       
+     </show-report>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import ShowStores from '@/components/ShowStores.vue'
+import ShowReport from '@/components/ShowReport.vue'
 // import axios from 'axios';
 
 export default {
   name: 'home',
   components: {
-    'show-stores': ShowStores,
+    'show-stores': ShowrStores,
+    'show-report': ShowReport,
   },
   data() {
       return {
         user: this.$route.params.user,
         id: this.$route.params.id,
         stores : [],
+        report: false,
+        report_id: ''
       }
   },
   methods: {
-    methodName() {
+    getReport: function(id_selected) {
+      this.report_id = id_selected;
+      this.report = true;
+
 
     }
   },
