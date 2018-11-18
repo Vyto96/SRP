@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ user }}'s configured stores:</h1>
-
+    <p>{{ stores }}</p>
   </div>
 </template>
 
