@@ -29,7 +29,7 @@ def login():
         r = requests.get(url, headers=headers)
 
         if r.status_code == 200:
-            return redirect( os.environ.get('SR_SPA'))
+            return redirect( os.environ.get('SR_SPA') + '/' + my_form.email.data  + '/' + r.json()['id'])
 
         flash('invalid username or password, sorry!')
     return render_template('login.html', form=my_form)
