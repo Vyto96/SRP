@@ -38,9 +38,9 @@ export default {
     axios.get(url)
       .then(function (response) {
         // handle success
-        this.stores = response.data.user_stores;
+        // this.stores = response.data.user_stores;
         //     console.log(this.stores);
-        console.log(response);
+        console.log(response.data.user_stores);
       })
       .catch(function (error) {
         // handle error
