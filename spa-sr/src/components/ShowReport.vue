@@ -47,14 +47,14 @@ export default {
 
   methods: {
     parseDate(){
-      var d = this.start_date.slice(3, 5);
-      var m = this.start_date.slice(0, 2);
-      var y = this.start_date.slice(6, 10);
+      var d = this.start_date.slice(8, 10);
+      var m = this.start_date.slice(5, 7);
+      var y = this.start_date.slice(0, 4);
       this.start_date = y + m + d;
 
-      d = this.end_date.slice(3, 5);
-      m = this.end_date.slice(0, 2);
-      y = this.end_date.slice(6, 10);
+      d = this.end_date.slice(8, 10);
+      m = this.end_date.slice(5, 7);
+      y = this.end_date.slice(0, 4);
       this.end_date = y + m + d;
     },
     onSubmit (evt) {
