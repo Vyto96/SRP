@@ -2,7 +2,7 @@ from flask import Blueprint, request, abort, url_for, redirect, session
 import os
 api = Blueprint('api', __name__)
 
-from . import users, stores, ecommerces, functions, prova
+from . import users, stores, ecommerces, functions
 
 # @api.before_request
 # def before_request():
