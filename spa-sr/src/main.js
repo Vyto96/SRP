@@ -9,6 +9,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // MY COMPONENTS
 import Header from './components/Header.vue'
 import ShowStores from './components/ShowStores.vue'
+// VUE RESOURCE FOR HTTP CALL 
+import VueResource from 'vue-resource'
+
+
+// Use vue-resource package
+Vue.use(VueResource);
 
 
 Vue.use(BootstrapVue)
