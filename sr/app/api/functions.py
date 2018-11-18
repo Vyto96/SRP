@@ -20,7 +20,7 @@ def get_report_store(id_store):
     # AGGIORNAMENTO TOKEN
 
     resp = requests.post(
-                url="https://salesreporter.ddns.net/middle/ebay/refresh_token",
+                url= os.environ.get('SR_HOME') + "/middle/ebay/refresh_token",
                 data={'refresh_token': refresh_token}
                 )
 
@@ -29,7 +29,7 @@ def get_report_store(id_store):
     start_date = request.args['start_date']
     end_date =request.args['end_date']
 
-    url = 'https://salesreporter.ddns.net/middle/ebay/get_report'
+    url = os.environ.get('SR_HOME') + '/middle/ebay/get_report'
     headers = {
         'token': ref_tok
     }

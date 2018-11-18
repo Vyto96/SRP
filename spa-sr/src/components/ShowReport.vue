@@ -62,15 +62,17 @@ export default {
 
       this.parseDate();
 
-      var url = 'https://salesreporter.ns1.mooo.com/api/get_report/' + this.id + '/stores';
+      var url = 'https://salesreporter.ns1.mooo.com/api/get_report/' + this.id;
+      console.log(url);
 
-      this.$http.get(url, 
+      this.$http.get(url,
         {params: {start_date: this.start_date,
                   end_date: this.end_date}, } //headers: {'X-Custom': '...'}},
         ).then(function(data){
 
           // this.stores = data.body.;
           // console.log(data.body.user_stores);
+          alert('chiamata fatta');
           console.log(data);
           // console.log(this.stores);
 
