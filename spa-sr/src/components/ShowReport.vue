@@ -2,7 +2,7 @@
   <div>
       <h1>Show report for store {{ store }} with id = {{ id }}</h1>
       <div v-show="!show_report">
-        <b-form @submit="onSubmit" @reset="onReset">
+        <b-form @submit="onSubmit">
           <!-- START DATE -->
           <b-form-group id="startDateGroup"
                         label="Report start date:"
@@ -29,7 +29,6 @@
           </b-form-group>
 
          <b-button type="submit" variant="primary">Submit</b-button>
-         <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
       </div>
       <div v-show="show_report">
@@ -89,11 +88,6 @@ export default {
           this.show_report = true;
         });
     },
-    onReset (evt) {
-      evt.preventDefault();
-      /* Reset our form values */
-      alert('reset');
-    }
   },
 
 

@@ -5,7 +5,7 @@
         <h2>{{ store.store_name }}</h2>
         <h3>{{ store.reference_ecommerce_name }}</h3>
         <h3>{{ store.id }}</h3>
-        <b-button  variant="primary" v-on:click="getReport(store.id, store.store_name)">
+        <b-button  variant="primary" v-on:click="getReport(store.id)">
             GET REPORT
         </b-button>
       </li>
@@ -23,9 +23,8 @@ export default {
       }
   },
   methods: {
-    getReport: function(store_id, store_name) {
+    getReport: function(store_id) {
       this.$emit('selectID', store_id);
-      this.$emit('selectStore', store_name);
     }
   }
 

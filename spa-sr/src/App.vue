@@ -11,7 +11,6 @@
 
 export default {
   data: () => ({
-       //prendere i dati dall'url più chiamata
   }),
 }
 
