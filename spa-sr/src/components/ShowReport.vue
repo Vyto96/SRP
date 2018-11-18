@@ -7,7 +7,7 @@
                         label="Report start date:"
                         label-for="startDate"
                         description="Insert Start date of report."> -->
-            <b-form-input v-model="start-date"
+            <b-form-input v-model="start_date"
                          type="date"
                          placeholder="Enter date"
                          >
@@ -27,7 +27,7 @@
 export default {
   props: ['id'],
   data: () => ({
-
+    start_date: '',
   })
 }
 </script>
