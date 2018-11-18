@@ -13,7 +13,7 @@ import ShowStores from '@/components/ShowStores.vue'
 export default {
   name: 'home',
   components: {
-    show-stores: ShowStores,
+    'show-stores': ShowStores,
   },
   data() {
       return {
