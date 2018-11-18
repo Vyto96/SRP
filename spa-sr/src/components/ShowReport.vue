@@ -1,6 +1,12 @@
 <template>
   <div>
       <h1>Show report for store {{ store }} with id = {{ id }}</h1>
+      <div v-show="show_report">
+          <show-records v-bind:records="records"> </show-records>
+          <b-button  variant="primary" v-on:click="show_report=false">
+              get another report
+          </b-button>
+      </div>
       <div v-show="!show_report">
         <b-form @submit="onSubmit">
           <!-- START DATE -->
@@ -31,12 +37,7 @@
          <b-button type="submit" variant="primary">Submit</b-button>
         </b-form>
       </div>
-      <div v-show="show_report">
-          <show-records v-bind:records="records"> </show-records>
-          <b-button  variant="primary" v-on:click="show_report=false">
-              get another report
-          </b-button>
-      </div>
+
 
 
   </div>

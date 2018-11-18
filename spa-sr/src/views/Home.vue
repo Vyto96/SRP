@@ -1,17 +1,20 @@
 <template>
   <div class="home">
-    <h1>{{ user }}'s configured stores:</h1>
+    <h1 v-show="!report">{{ user }}'s configured stores:</h1>
     <show-stores v-show="!report"
                 v-bind:stores="stores"
                 v-on:selectID="getReport($event)">
      </show-stores>
 
      <div v-show="report">
-       <show-report v-bind:id="report_id">
-       </show-report>
+
        <b-button  variant="primary" v-on:click="report=false">
            show user store
        </b-button>
+
+       <show-report v-bind:id="report_id"></show-report>
+
+
      </div>
   </div>
 </template>
