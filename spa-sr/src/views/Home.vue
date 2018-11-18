@@ -37,7 +37,7 @@ export default {
   beforeMount() {
     //do something before mounting vue instance
     alert('beforMount');
-  }
+  },
   mounted() {
     //do something after mounting vue instance
     alert('mounted');
