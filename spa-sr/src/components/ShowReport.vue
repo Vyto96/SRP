@@ -9,7 +9,7 @@
                         label-for="startDate"
                         >
             <b-form-input v-model="start_date"
-                         type="date"
+                         type="month"
                          placeholder="Enter date"
                          required
                          >
@@ -48,8 +48,8 @@ export default {
   methods: {
     onSubmit (evt) {
       evt.preventDefault();
-      alert('start date: ' + this.start_date.year + '_' + this.start_date.month + '_'+ this.start_date.day );
-      console.log(this.end_date);
+      // alert('start date: ' + this.start_date.year + '_' + this.start_date.month + '_'+ this.start_date.day );
+      console.log(typeof this.end_date);
       // alert('end date: ' + this.end_date);
 
     },
