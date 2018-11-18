@@ -6,13 +6,13 @@
                 v-on:selectID="getReport($event)">
      </show-stores>
 
-     <show-report v-show="report"
-                  v-bind:id="report_id">
-
-        <b-button  variant="primary" v-on:click="report=false">
-            show user store
-        </b-button>
-     </show-report>
+     <div v-show="report">
+       <show-report v-bind:id="report_id">
+       </show-report>
+       <b-button  variant="primary" v-on:click="report=false">
+           show user store
+       </b-button>
+     </div>
   </div>
 </template>
 
