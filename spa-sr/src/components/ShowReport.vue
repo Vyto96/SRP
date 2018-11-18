@@ -75,15 +75,12 @@ export default {
       this.parseDate();
 
       var url = 'https://salesreporter.ns1.mooo.com/api/get_report/' + this.id;
-      console.log(url);
 
       this.$http.get(url,
         {params: {start_date: this.start_date,
                   end_date: this.end_date}, } //headers: {'X-Custom': '...'}},
         ).then(function(data){
 
-          alert('chiamata fatta');
-          console.log(data.body.report.report);
           this.records = data.body.report.report;
           this.show_report = true;
         });
