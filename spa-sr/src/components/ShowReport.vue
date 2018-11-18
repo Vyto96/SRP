@@ -1,5 +1,5 @@
 <template>
-  <div id="show-report">
+  <div>
       <h1>Show report for store with id = {{ id }}</h1>
 
       <div>
