@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Show report for store with id = {{ id }}</h1>
-      <div>
+      <div v-show="!show_report">
         <b-form @submit="onSubmit" @reset="onReset">
           <!-- START DATE -->
           <b-form-group id="startDateGroup"
@@ -32,17 +32,27 @@
          <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
       </div>
-
+      <div v-show="show_report">
+          <show-records v-bind:records="records"> </show-records> 
+      </div>
 
 
   </div>
 </template>
 <script>
+import ShowRecords from '@/components/ShowRecords.vue'
+
+
 export default {
   props: ['id'],
+  components: {
+    'show-records': ShowRecords,
+  },
   data: () => ({
     start_date: '',
     end_date: '',
+    records: [],
+    show_report: false,
   }),
 
   methods: {
@@ -70,14 +80,10 @@ export default {
                   end_date: this.end_date}, } //headers: {'X-Custom': '...'}},
         ).then(function(data){
 
-          // this.stores = data.body.;
-          // console.log(data.body.user_stores);
           alert('chiamata fatta');
           console.log(data.body.report.report);
-          // console.log(this.stores);
-
-      // alert('start date:' + this.start_date);
-      // alert('end date: ' + this.end_date);
+          this.records = data.body.report.report;
+          this.show_report = true;
         });
     },
     onReset (evt) {
