@@ -73,7 +73,7 @@ export default {
           // this.stores = data.body.;
           // console.log(data.body.user_stores);
           alert('chiamata fatta');
-          console.log(data);
+          console.log(data.body.report.report);
           // console.log(this.stores);
 
       // alert('start date:' + this.start_date);
