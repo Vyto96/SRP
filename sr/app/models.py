@@ -2,10 +2,7 @@ from werkzeug.security import generate_password_hash,  check_password_hash
 
 from flask_login import UserMixin, AnonymousUserMixin
 
-from . import db, login_manager # importato per poter registrare la funzione di
-    # "load_user" che sostanzialmente ritorna lo user del db il cui id corrisponde
-    # a quello passato in input sottoforma di stringa unicode(per questo castata ad intero),
-    # sempre che la query dello stesso nel db abbia prodotto un risultato
+from . import db, login_manager
 
 # necessario per la generazione del token
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
@@ -65,8 +62,6 @@ class Ecommerce(db.Model):
     functions = db.relationship('Function', backref='ecommerces', lazy='dynamic')
 
     # METODI
-
-
     def to_json(self):
         json_ecommerce = {
             'url': url_for('api.get_ecommerces', id=self.id),
@@ -75,9 +70,6 @@ class Ecommerce(db.Model):
 
         }
         return json_ecommerce
-
-
-
 
     @staticmethod
     def insert_all():
@@ -137,10 +129,7 @@ class Function(db.Model):
 
 #----------------------------------------------------------
 
-
-
 #----------------------------------------------------------
-
 class Store(db.Model):
     __tablename__ = 'stores'
     id = db.Column(db.Integer, primary_key=True)
@@ -189,7 +178,7 @@ login_manager.anonymous_user = AnonymousUser
 
 
 
-#                   PARTE RESTANTE DI USER
+#                   PARTE RESTANTE DI USER DA AGGIUNGERE IN FUTURO
 #                             |
 #                             |
 #                             |

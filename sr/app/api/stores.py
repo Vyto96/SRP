@@ -18,7 +18,7 @@ def get_store(id):
     store = Store.query.get_or_404(id)
     return jsonify( store.to_json() )
 
-#######da cancellare:
+####### ONLY FOR TEST######:
 @api.route('/add_store',  methods=['POST'])
 def add_store_simply():
     s = Store(

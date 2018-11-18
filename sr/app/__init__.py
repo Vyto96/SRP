@@ -7,31 +7,23 @@ from flask_cors import CORS
 from flask_bootstrap import Bootstrap
 #
 #
-# #CONTROLLA
-# from flask_pagedown import PageDown
+# # from flask_pagedown import PageDown
 # from flask_moment import Moment
-#
-#
+##
 # mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
 bootstrap = Bootstrap()
 cors = CORS()
 #
-#
-# #CONTROLLA
 # pagedown = PageDown()
 # moment = Moment()
 #
-#
-#
-#
 login_manager.login_message = 'Warning: login to view this page'
-login_manager.session_protection = 'strong' # livello di sicurezza
-login_manager.login_view = 'auth.login' # set dell'end-point per la login page
-                                        # necessario perche' la pagina di login si trova
-#                                         # all'interno di un blueprint(auth)
-#
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'auth.login'
+
+
 def create_app():
     app = Flask(__name__)
     config = Config()
@@ -42,7 +34,6 @@ def create_app():
 
 
     with app.app_context():
-        # if per controllare l'esistenza del db prima di crearlo
         db.create_all()
 
     login_manager.init_app(app)
@@ -56,10 +47,7 @@ def create_app():
     def index():
         return '<h1>hello from sales reporter </h1>'
 
-
-
 # #-------BLUEPRINT REGISTRATION
-
     from .api import api as api_BP
     app.register_blueprint(api_BP, url_prefix='/api')
 
@@ -68,6 +56,5 @@ def create_app():
 
     from .middleware import middle as middle_BP
     app.register_blueprint(middle_BP, url_prefix='/middle')
-
 
     return app

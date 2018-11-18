@@ -4,8 +4,6 @@ from .forms import LoginForm, RegistrationForm
 import requests, os
 
 
-
-
 @web_app.route('/')
 def index():
     return redirect( url_for('web_app.login') )
@@ -31,7 +29,6 @@ def login():
         if r.status_code == 200:
             spa_link = os.environ.get('SR_SPA')
             spa_link = spa_link + '/' + my_form.email.data  + '/' + str(r.json()['id'])
-            # spa_link += '/' + my_form.email.data  + '/'
             return redirect(spa_link)
 
         flash('invalid username or password, sorry!')
@@ -62,18 +59,3 @@ def register():
             return redirect(url_for('web_app.login'))
         flash(r.text)
     return render_template('register.html', form=my_form)
-
-
-
-
-
-
-
-
-
-
-
-# @web_app.route('/prova_web')
-# def prova_web():
-#     r = requests.get(url_for('api.get_users', _external=True) )
-#     return '</h1>ritorno dell api--></h1><br>' + str(r.text)

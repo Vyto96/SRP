@@ -19,7 +19,6 @@ export default {
   props: ['stores'],
   data () {
       return {
-
       }
   },
   methods: {
@@ -27,14 +26,8 @@ export default {
       this.$emit('selectID', store_id);
     }
   }
-
-
 }
-
 </script>
-
-
-
 <style>
 #show-stores{
     max-width: 800px;

@@ -14,7 +14,6 @@
 
        <show-report v-bind:id="report_id"></show-report>
 
-
      </div>
   </div>
 </template>

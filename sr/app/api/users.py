@@ -3,10 +3,6 @@ from .. import db
 from ..models import Store, User
 from . import api
 import requests, os
-# from .decorators import permission_required
-# from .errors import forbidden
-
-
 
 @api.route('/login')
 def try_login():
@@ -42,7 +38,7 @@ def register():
     username_used = User.query.filter_by(username=username).first()
     if username_used:
         return 'error, username already used', 403
-    
+
 
     if  email and username and password:
 
@@ -94,20 +90,6 @@ def add_store(id_user, id_ecom):
         redirect(url_for('middle.ebay_auth', _external=True) )
 
 
-    #
-    #
-    #
-    #     user = User(email=request.form.get('email'),
-    #                 username=request.form.get('username'),
-    #                 password=request.form.get('password')
-    #                      )
-    #     db.session.add(user)
-    #     db.session.commit()
-    #     return 'Registration successful', 200
-    # return 'error', 401
-
-
-
 
 
 
@@ -137,20 +119,11 @@ def get_users():
         return jsonify( {'users': [u.to_json() for u in users] } )
     return '<h1>nessun utente nel db</h1>'
 
-
-@api.route('/users/<id>/', methods=['GET', 'POST'])
-def get_user(id):
-    user = User.query.get_or_404(id)
-    if request.method == 'GET': # richiesta utente
-        return jsonify( user.to_json() )
-    else: # aggiungi utente
-        return "<h1>aggiunta utente</h1>"
-
-
-
-            # if user.stores:
-    #     return '<h1> user esiste, tipo--></h1><br> ' +  str(type(str(user)))
-    # else:
-    #     return 'fuffa'
-     # \
-     #        + '<h1> tipo di user.stores </h1><br> ' + str(type(user.stores))
+# 
+# @api.route('/users/<id>/', methods=['GET', 'POST'])
+# def get_user(id):
+#     user = User.query.get_or_404(id)
+#     if request.method == 'GET': # richiesta utente
+#         return jsonify( user.to_json() )
+#     else: # aggiungi utente
+#         return "<h1>aggiunta utente</h1>"

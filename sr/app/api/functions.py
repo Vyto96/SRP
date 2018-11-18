@@ -4,8 +4,6 @@ from ..models import Store, User, Ecommerce
 from . import api
 import requests, os
 
-
-
 @api.route('/get_report/<id_store>')
 def get_report_store(id_store):
 
@@ -15,10 +13,7 @@ def get_report_store(id_store):
         abort(404)
 
     refresh_token = store.oauth_json;
-
-
     # AGGIORNAMENTO TOKEN
-
     resp = requests.post(
                 url= os.environ.get('SR_HOME') + "/middle/ebay/refresh_token",
                 data={'refresh_token': refresh_token}

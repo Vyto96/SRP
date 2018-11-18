@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app" class="container">
 <!-- NAVBAR -->
     <sr-header></sr-header>
 <!--ROUTER VIEW -->
