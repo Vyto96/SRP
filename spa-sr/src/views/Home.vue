@@ -33,25 +33,14 @@ export default {
         console.log(data);
         // console.log(this.stores);
       });
-
-    // const axios = require('axios');
-
-
-// Make a request for a user with a given ID
-    // axios.get(url)
-      // .then(function (response) {
-        // handle success
-        // this.stores = response.data.user_stores;
-        //     console.log(this.stores);
-        // console.log(response.data.user_stores);
-      // })
-      // .catch(function (error) {
-      //   // handle error
-      //   console.log(error);
-      // })
-      // .then(function () {
-      //   // always executed
-      // });
+  },
+  beforeMount() {
+    //do something before mounting vue instance
+    alert('beforMount');
+  }
+  mounted() {
+    //do something after mounting vue instance
+    alert('mounted');
   }
 
 }
