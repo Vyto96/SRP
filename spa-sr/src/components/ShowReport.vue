@@ -2,20 +2,34 @@
   <div>
       <h1>Show report for store with id = {{ id }}</h1>
       <div>
-        <b-form >
+        <b-form @submit="onSubmit" @reset="onReset">
+          <!-- START DATE -->
           <b-form-group id="startDateGroup"
                         label="Report start date:"
                         label-for="startDate"
-                        description="Insert Start date of report.">
+                        >
             <b-form-input v-model="start_date"
                          type="date"
                          placeholder="Enter date"
+                         required
                          >
            </b-form-input>
-
-           <b-button type="submit" variant="primary">Submit</b-button>
-           <b-button type="reset" variant="danger">Reset</b-button>
           </b-form-group>
+          <!-- END-DATE -->
+          <b-form-group id="endDateGroup"
+                        label="Report end date:"
+                        label-for="endDate"
+                        >
+            <b-form-input v-model="end_date"
+                         type="date"
+                         placeholder="Enter date"
+                         required
+                         >
+           </b-form-input>
+          </b-form-group>
+
+         <b-button type="submit" variant="primary">Submit</b-button>
+         <b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
       </div>
 
@@ -28,7 +42,24 @@ export default {
   props: ['id'],
   data: () => ({
     start_date: '',
-  })
+    end_date: '',
+  }),
+
+  methods: {
+    onSubmit (evt) {
+      evt.preventDefault();
+      alert('start date: ' + this.start_date);
+      alert('end date: ' + this.end_date);
+    },
+    onReset (evt) {
+      evt.preventDefault();
+      /* Reset our form values */
+      alert('reset');
+    }
+  },
+
+
+
 }
 </script>
 <style lang="scss" scoped>
