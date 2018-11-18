@@ -36,9 +36,9 @@ export default {
     console.log(url);
 // Make a request for a user with a given ID
     axios.get(url)
-      .then(function (data) {
+      .then(function (response) {
         // handle success
-        this.stores = data.user_stores;
+        this.stores = response.user_stores;
         //     console.log(this.stores);
         console.log(response);
       })
@@ -48,7 +48,7 @@ export default {
       })
       .then(function () {
         // always executed
-      });  
+      });
   }
 
 }
