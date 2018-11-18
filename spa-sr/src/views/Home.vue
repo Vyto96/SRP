@@ -34,14 +34,14 @@ export default {
         // console.log(this.stores);
       });
   },
-  beforeMount() {
-    //do something before mounting vue instance
-    alert('beforMount');
-  },
-  mounted() {
-    //do something after mounting vue instance
-    alert('mounted');
-  }
+  // beforeMount() {
+  //   //do something before mounting vue instance
+  //   alert('beforMount');
+  // },
+  // mounted() {
+  //   //do something after mounting vue instance
+  //   alert('mounted');
+  // }
 
 }
 </script>
