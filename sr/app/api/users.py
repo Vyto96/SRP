@@ -119,11 +119,11 @@ def get_users():
         return jsonify( {'users': [u.to_json() for u in users] } )
     return '<h1>nessun utente nel db</h1>'
 
-# 
-# @api.route('/users/<id>/', methods=['GET', 'POST'])
-# def get_user(id):
-#     user = User.query.get_or_404(id)
-#     if request.method == 'GET': # richiesta utente
-#         return jsonify( user.to_json() )
-#     else: # aggiungi utente
-#         return "<h1>aggiunta utente</h1>"
+
+@api.route('/users/<id>/', methods=['GET', 'POST'])
+def get_user(id):
+    user = User.query.get_or_404(id)
+    if request.method == 'GET': # richiesta utente
+        return jsonify( user.to_json() )
+    else: # aggiungi utente
+        return "<h1>aggiunta utente</h1>"
